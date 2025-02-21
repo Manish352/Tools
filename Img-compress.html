@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Online Image Compressor - Reduce image file size while maintaining quality. Supports JPG, PNG, and WebP formats.">
+    <title>Manish's Image Compressor | Professional Image Optimization</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4013351666765853" crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(45deg, #2b5876, #4e4376);
+            color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+        }
+
+        .main-content {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .sidebar {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            height: fit-content;
+        }
+
+        .owner-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .upload-area {
+            border: 3px dashed #2b5876;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 30px 0;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            background: rgba(43,88,118,0.03);
+        }
+
+        .upload-area:hover {
+            background: rgba(43,88,118,0.08);
+            transform: translateY(-5px);
+        }
+
+        button {
+            background: #2b5876;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #4e4376;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .ad-slot {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Professional Image Compressor</h1>
+            <p>Optimize your images with advanced compression technology</p>
+        </div>
+
+        <main class="main-content">
+            <div class="ad-slot">
+                <!-- AdSense Header Ad -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-4013351666765853"
+                     data-ad-slot="INSERT_AD_SLOT_ID_HERE"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="upload-area" id="dropZone">
+                <p>📁 Click to upload or drag & drop images here</p>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+            </div>
+
+            <div class="compression-controls">
+                <label for="quality">Compression Level: <span id="qualityValue">80</span>%</label>
+                <input type="range" id="quality" min="1" max="100" value="80">
+                <button onclick="compressImage()">Compress Now</button>
+            </div>
+
+            <div class="preview-container" id="previewContainer">
+                <img id="preview" style="max-width: 100%; border-radius: 15px;">
+                <a id="downloadLink" download="compressed.jpg" style="display: none; margin-top: 20px;" class="download-btn">Download Compressed Image</a>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="owner-info">
+                <h3>Contact Owner</h3>
+                <p>👤 <strong>Name:</strong> Manish Bhaskar</p>
+                <p>🏠 <strong>Address:</strong> Kairwali, Neem Ka Thana</p>
+                <p>📱 <strong>Mobile:</strong> <a href="tel:8058822082">+91 80588 22082</a></p>
+            </div>
+
+            <div class="ad-slot">
+                <!-- AdSense Sidebar Ad -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-4013351666765853"
+                     data-ad-slot="INSERT_AD_SLOT_ID_HERE"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // Previous JavaScript code remains the same
+        const fileInput = document.getElementById('fileInput');
+        const dropZone = document.getElementById('dropZone');
+        const qualityInput = document.getElementById('quality');
+        const qualityValue = document.getElementById('qualityValue');
+        const previewContainer = document.getElementById('previewContainer');
+        const preview = document.getElementById('preview');
+        const downloadLink = document.getElementById('downloadLink');
+
+        // Event Listeners
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => e.preventDefault());
+        dropZone.addEventListener('drop', handleDrop);
+        qualityInput.addEventListener('input', updateQuality);
+
+        function updateQuality() {
+            qualityValue.textContent = qualityInput.value;
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const file = e.dataTransfer.files[0];
+            handleImage(file);
+        }
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            handleImage(file);
+        });
+
+        function handleImage(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please upload an image file');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                preview.src = e.target.result;
+                previewContainer.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function compressImage() {
+            const quality = qualityInput.value / 100;
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+
+            img.onload = () => {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    downloadLink.href = url;
+                    downloadLink.style.display = 'block';
+                }, 'image/jpeg', quality);
+            };
+
+            img.src = preview.src;
+        }
+    </script>
+</body>
+</html>

@@ -12,12 +12,10 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             background: #f8f9fa;
             color: #2d3436;
         }
-
         /* Navigation */
         .navbar {
             background: white;
@@ -27,7 +25,6 @@
             top: 0;
             z-index: 1000;
         }
-
         .nav-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -35,19 +32,41 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: #2d3436;
             text-decoration: none;
         }
-
         .nav-links {
             display: flex;
             gap: 2rem;
         }
-
+        .nav-links a {
+            text-decoration: none;
+            color: #2d3436;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #6c5ce7;
+        }
+        /* Mobile Menu */
+        .mobile-menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
         /* Hero Section */
         .hero {
             text-align: center;
@@ -55,18 +74,15 @@
             background: linear-gradient(135deg, #6c5ce7, #a363d9);
             color: white;
         }
-
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
         }
-
         .search-bar {
             max-width: 600px;
             margin: 2rem auto;
             position: relative;
         }
-
         .search-input {
             width: 100%;
             padding: 1rem 2rem;
@@ -74,7 +90,6 @@
             border: none;
             font-size: 1rem;
         }
-
         /* Tools Grid */
         .tools-grid {
             max-width: 1200px;
@@ -84,7 +99,6 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
         .tool-card {
             background: white;
             border-radius: 10px;
@@ -93,30 +107,25 @@
             transition: transform 0.3s ease;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
         .tool-card:hover {
             transform: translateY(-5px);
         }
-
         .tool-icon {
             font-size: 2.5rem;
             color: #6c5ce7;
             margin-bottom: 1rem;
         }
-
         /* Categories */
         .categories {
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
         }
-
         .category-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .category-card {
             background: white;
             border-radius: 10px;
@@ -125,7 +134,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .category-card::before {
             content: '';
             position: absolute;
@@ -135,7 +143,36 @@
             height: 4px;
             background: #6c5ce7;
         }
-
+        /* Newsletter */
+        .newsletter {
+            background: #6c5ce7;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .newsletter-form input {
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 30px;
+            width: 300px;
+        }
+        .newsletter-form button {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            background: #fff;
+            color: #6c5ce7;
+            cursor: pointer;
+        }
+        .newsletter-form button:hover {
+            background: #f8f9fa;
+        }
         /* Footer */
         .footer {
             background: #2d3436;
@@ -143,7 +180,6 @@
             padding: 4rem 2rem;
             margin-top: 4rem;
         }
-
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -151,16 +187,25 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
+        .footer-section {
+            text-align: center;
+        }
+        .footer-section a {
+            color: #6c5ce7;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+        }
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-
+            .mobile-menu-icon {
+                display: block;
+            }
             .hero h1 {
                 font-size: 2rem;
             }
-
             .tools-grid {
                 grid-template-columns: 1fr;
             }
@@ -177,9 +222,9 @@
                 <a href="#pricing">Pricing</a>
                 <a href="#contact">Contact</a>
             </div>
+            <i class="fas fa-bars mobile-menu-icon"></i>
         </div>
     </nav>
-
     <section class="hero">
         <h1>Your All-in-One File Conversion Solution</h1>
         <p>Convert, edit, and optimize images & PDFs with ease</p>
@@ -187,7 +232,6 @@
             <input type="text" class="search-input" placeholder="Search for tools...">
         </div>
     </section>
-
     <section class="categories" id="tools">
         <div class="category-grid">
             <div class="category-card">
@@ -207,7 +251,6 @@
             </div>
         </div>
     </section>
-
     <section class="tools-grid">
         <div class="tool-card">
             <i class="fas fa-compress tool-icon"></i>
@@ -230,7 +273,6 @@
             <p>Combine multiple PDF files into one</p>
         </div>
     </section>
-
     <section class="newsletter">
         <div class="newsletter-content">
             <h2>Stay Updated</h2>
@@ -241,7 +283,6 @@
             </form>
         </div>
     </section>
-
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -256,26 +297,26 @@
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>support@_manishbhaskar261@gmailindex.com</p>
-                <p>+918058822082</p>
+                <p>support@manishbhaskar261@gmail.com</p>
+                <p>+91 80588 22082</p>
             </div>
         </div>
     </footer>
-
     <script>
-        // Mobile menu toggle
-        const mobileMenu = document.createElement('div');
-        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
-        mobileMenu.style.display = 'none';
-        document.querySelector('.nav-content').appendChild(mobileMenu);
+        // Mobile menu toggle functionality
+        const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+        const navLinks = document.querySelector('.nav-links');
 
-        window.addEventListener('resize', () => {
-            mobileMenu.style.display = window.innerWidth < 768 ? 'block' : 'none';
+        mobileMenuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
 
-        mobileMenu.addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
+        // Close mobile menu when a link is clicked
+        navLinks.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                navLinks.classList.remove('active');
+            }
         });
     </script>
 </body>
-</html>
+</html>                                                              </

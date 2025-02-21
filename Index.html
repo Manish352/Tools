@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Toolkit - All-in-One File Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #2d3436;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3436;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #6c5ce7, #a363d9);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            color: #6c5ce7;
+            margin-bottom: 1rem;
+        }
+
+        /* Categories */
+        .categories {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #6c5ce7;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d3436;
+            color: white;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">Digital Toolkit</a>
+            <div class="nav-links">
+                <a href="#tools">Tools</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Your All-in-One File Conversion Solution</h1>
+        <p>Convert, edit, and optimize images & PDFs with ease</p>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search for tools...">
+        </div>
+    </section>
+
+    <section class="categories" id="tools">
+        <div class="category-grid">
+            <div class="category-card">
+                <i class="fas fa-file-pdf tool-icon"></i>
+                <h3>PDF Tools</h3>
+                <p>Merge, split, compress, and convert PDF files</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-image tool-icon"></i>
+                <h3>Image Tools</h3>
+                <p>Convert, resize, compress, and edit images</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-tools tool-icon"></i>
+                <h3>Other Tools</h3>
+                <p>Document conversion and file utilities</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-grid">
+        <div class="tool-card">
+            <i class="fas fa-compress tool-icon"></i>
+            <h3>Image Compressor</h3>
+            <p>Reduce image file size without quality loss</p>
+        </div>
+        <div class="tool-card">
+            <i class="fas fa-file-export tool-icon"></i>
+            <h3>PDF to Word</h3>
+            <p>Convert PDF documents to editable Word files</p>
+        </div>
+        <div class="tool-card">
+            <i class="fas fa-images tool-icon"></i>
+            <h3>Image Converter</h3>
+            <p>Convert between JPG, PNG, WEBP formats</p>
+        </div>
+        <div class="tool-card">
+            <i class="fas fa-merge tool-icon"></i>
+            <h3>PDF Merger</h3>
+            <p>Combine multiple PDF files into one</p>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to receive updates about new tools and features</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Digital Toolkit</h4>
+                <p>Your complete file conversion solution</p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>support@_manishbhaskar261@gmailindex.com</p>
+                <p>+918058822082</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.createElement('div');
+        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+        mobileMenu.style.display = 'none';
+        document.querySelector('.nav-content').appendChild(mobileMenu);
+
+        window.addEventListener('resize', () => {
+            mobileMenu.style.display = window.innerWidth < 768 ? 'block' : 'none';
+        });
+
+        mobileMenu.addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

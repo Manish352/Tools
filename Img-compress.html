@@ -3,221 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Online Image Compressor - Reduce image file size while maintaining quality. Supports JPG, PNG, and WebP formats.">
-    <title>Manish's Image Compressor | Professional Image Optimization</title>
+    <title>Manish's Image Compressor - Reduce Photo Size Online</title>
+    <meta name="description" content="🚀 Free Online Image Compressor Tool - Reduce JPG/PNG Size by 90% ⚡ Best Photo Size Reducer for WhatsApp & Instagram ✅ 100% Free">
+    <!-- Google AdMob -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4013351666765853" crossorigin="anonymous"></script>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --background: #F7FFF7;
         }
+
         body {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            font-family: 'Poppins', sans-serif;
+            background: var(--background);
+            margin: 0;
+            padding: 15px;
             min-height: 100vh;
-            padding: 30px;
         }
+
         .container {
-            max-width: 1400px;
+            max-width: 100%;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
         }
+
+        /* Header */
         .header {
-            grid-column: 1 / -1;
             text-align: center;
-            padding: 40px;
-            background: linear-gradient(45deg, #2b5876, #4e4376);
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            margin-bottom: 30px;
+            border-radius: 15px;
+            margin: 10px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .main-content {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-        .sidebar {
-            background: #ffffff;
+
+        /* Upload Area */
+        .upload-box {
+            border: 3px dashed var(--primary);
             padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            height: fit-content;
-        }
-        .owner-info {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-        .upload-area {
-            border: 3px dashed #2b5876;
-            padding: 60px 20px;
             text-align: center;
-            margin: 30px 0;
+            border-radius: 12px;
+            margin: 15px 0;
+            background: rgba(255,107,107,0.05);
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 20px;
-            background: rgba(43,88,118,0.03);
-        }
-        .upload-area:hover {
-            background: rgba(43,88,118,0.08);
-            transform: translateY(-5px);
-        }
-        button {
-            background: #2b5876;
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 17px;
-            font-weight: 500;
             transition: all 0.3s ease;
-            margin-top: 20px;
         }
+
+        .upload-box:hover {
+            transform: scale(1.02);
+            background: rgba(255,107,107,0.1);
+        }
+
+        /* Controls */
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin: 15px 0;
+        }
+
         button:hover {
-            background: #4e4376;
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
-        .ad-slot {
-            background: #ffffff;
+
+        /* Owner Info */
+        .owner-info {
+            background: linear-gradient(45deg, #4ECDC4, #45B7AF);
+            color: white;
             padding: 25px;
             border-radius: 15px;
-            margin: 30px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 15px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        @media (max-width: 1200px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .header {
-                padding: 30px 20px;
-            }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.5rem; }
+            .upload-box { padding: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Ad Slot Top -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4013351666765853"
+             data-ad-slot="YOUR_TOP_AD_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+
         <div class="header">
-            <h1>Professional Image Compressor</h1>
-            <p>Optimize your images with advanced compression technology</p>
+            <h1>📸 Image Compressor Tool</h1>
+            <p>Reduce Photo Size Instantly - Free Online Solution</p>
         </div>
-        <main class="main-content">
-            <div class="ad-slot">
-                <!-- AdSense Header Ad -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-4013351666765853"
-                     data-ad-slot="INSERT_AD_SLOT_ID_HERE"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+
+        <!-- Upload Section -->
+        <div class="upload-box" id="dropZone">
+            <h2>⬆️ Upload Image</h2>
+            <p>Drag & Drop or Click to Select (JPG/PNG)</p>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <label>Quality: <span id="qualityValue">80</span>%</label>
+            <input type="range" id="quality" min="1" max="100" value="80">
+            <button onclick="compressImage()">Compress Now</button>
+            <div id="previewArea" style="display:none;">
+                <img id="preview" style="max-width:100%; border-radius:8px; margin:15px 0;">
+                <a id="downloadLink" download style="display:none;" class="download-btn">⬇️ Download</a>
             </div>
-            <div class="upload-area" id="dropZone">
-                <p>📁 Click to upload or drag & drop images here</p>
-                <input type="file" id="fileInput" accept="image/*" hidden>
-            </div>
-            <div class="compression-controls">
-                <label for="quality">Compression Level: <span id="qualityValue">80</span>%</label>
-                <input type="range" id="quality" min="1" max="100" value="80">
-                <button onclick="compressImage()">Compress Now</button>
-            </div>
-            <div class="preview-container" id="previewContainer" style="display: none;">
-                <img id="preview" style="max-width: 100%; border-radius: 15px; margin-top: 20px;">
-                <a id="downloadLink" download="compressed.jpg" style="display: none; margin-top: 20px;" class="download-btn">Download Compressed Image</a>
-            </div>
-        </main>
-        <aside class="sidebar">
-            <div class="owner-info">
-                <h3>Contact Owner</h3>
-                <p>👤 <strong>Name:</strong> Manish Bhaskar</p>
-                <p>🏠 <strong>Address:</strong> Kairwali, Neem Ka Thana</p>
-                <p>📱 <strong>Mobile:</strong> <a href="tel:8058822082">+91 80588 22082</a></p>
-            </div>
-            <div class="ad-slot">
-                <!-- AdSense Sidebar Ad -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-4013351666765853"
-                     data-ad-slot="INSERT_AD_SLOT_ID_HERE"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-        </aside>
+        </div>
+
+        <!-- Owner Information -->
+        <div class="owner-info">
+            <h3>👨💻 Developer Details</h3>
+            <p>🏠 Name: Manish Bhaskar</p>
+            <p>📍 Address: Kairwali, Neem Ka Thana, Sikar (Raj)</p>
+            <p>📧 Email: <a href="mailto:manishbhaskar261@gmail.com" style="color:white;">manishbhaskar261@gmail.com</a></p>
+            <p>📞 Phone: <a href="tel:+918058822082" style="color:white;">+91 80588 22082</a></p>
+        </div>
+
+        <!-- Ad Slot Bottom -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4013351666765853"
+             data-ad-slot="YOUR_BOTTOM_AD_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
     </div>
+
     <script>
+        // Initialize Ads
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
+        // Compression Logic
         const fileInput = document.getElementById('fileInput');
         const dropZone = document.getElementById('dropZone');
         const qualityInput = document.getElementById('quality');
         const qualityValue = document.getElementById('qualityValue');
-        const previewContainer = document.getElementById('previewContainer');
         const preview = document.getElementById('preview');
         const downloadLink = document.getElementById('downloadLink');
+        const previewArea = document.getElementById('previewArea');
+        let selectedFile = null;
 
         // Event Listeners
         dropZone.addEventListener('click', () => fileInput.click());
         dropZone.addEventListener('dragover', (e) => e.preventDefault());
         dropZone.addEventListener('drop', handleDrop);
-        qualityInput.addEventListener('input', updateQuality);
-
-        function updateQuality() {
-            qualityValue.textContent = qualityInput.value;
-        }
+        qualityInput.addEventListener('input', () => qualityValue.textContent = qualityInput.value);
+        fileInput.addEventListener('change', handleFileSelect);
 
         function handleDrop(e) {
             e.preventDefault();
-            const file = e.dataTransfer.files[0];
-            handleImage(file);
+            handleFile(e.dataTransfer.files[0]);
         }
 
-        fileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            handleImage(file);
-        });
+        function handleFileSelect(e) {
+            handleFile(e.target.files[0]);
+        }
 
-        function handleImage(file) {
-            if (!file.type.startsWith('image/')) {
-                alert('Please upload an image file');
-                return;
-            }
+        function handleFile(file) {
+            if (!file?.type.startsWith('image/')) return alert('Please select an image file');
+            selectedFile = file;
+            previewArea.style.display = 'block';
             const reader = new FileReader();
-            reader.onload = (e) => {
-                preview.src = e.target.result;
-                previewContainer.style.display = 'block';
-            };
+            reader.onload = (e) => preview.src = e.target.result;
             reader.readAsDataURL(file);
         }
 
         function compressImage() {
-            const quality = qualityInput.value / 100;
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
+            if (!selectedFile) return alert('Please select an image first');
             const img = new Image();
-
             img.onload = () => {
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
-                canvas.toBlob((blob) => {
+                const canvas = document.createElement('canvas');
+                [canvas.width, canvas.height] = [img.width, img.height];
+                canvas.getContext('2d').drawImage(img, 0, 0);
+                canvas.toBlob(blob => {
                     const url = URL.createObjectURL(blob);
                     downloadLink.href = url;
-                    downloadLink.download = 'compressed-image.' + preview.src.split(';')[0].split('/')[1];
+                    downloadLink.download = `compressed_${selectedFile.name}`;
                     downloadLink.style.display = 'block';
-                }, preview.src.split(';')[0].split(':')[1], quality);
+                    alert(`Original: ${(selectedFile.size/1024).toFixed(2)}KB\nCompressed: ${(blob.size/1024).toFixed(2)}KB`);
+                }, selectedFile.type, qualityInput.value/100);
             };
-
-            img.src = preview.src;
+            img.src = URL.createObjectURL(selectedFile);
         }
     </script>
 </body>

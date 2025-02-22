@@ -3,320 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Toolkit - All-in-One File Converter</title>
+    <title>Manish's Image Magic - Ultimate Online Image Tools</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4013351666765853" crossorigin="anonymous"></script>
     <style>
-        * {
+        :root {
+            --neon-pink: #ff6bff;
+            --electric-blue: #4dfcff;
+            --cyber-purple: #a855f7;
+            --matrix-green: #00ff88;
+            --dark-bg: #0a0a0a;
+        }
+
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            min-height: 100vh;
         }
-        body {
-            background: #f8f9fa;
-            color: #2d3436;
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        /* Navigation */
-        .navbar {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+
+        .glow-text {
+            text-shadow: 0 0 10px var(--neon-pink),
+                         0 0 20px var(--electric-blue),
+                         0 0 30px var(--cyber-purple);
         }
-        .nav-content {
-            max-width: 1200px;
+
+        .container {
+            max-width: 95%;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 20px;
         }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2d3436;
-            text-decoration: none;
+
+        /* Header Styles */
+        .cyber-header {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid var(--matrix-green);
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 0 20px var(--matrix-green);
         }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
+
+        /* Upload Section */
+        .cyber-upload {
+            border: 3px dashed var(--electric-blue);
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(0,0,0,0.3);
         }
-        .nav-links a {
-            text-decoration: none;
-            color: #2d3436;
-            transition: color 0.3s ease;
+
+        .cyber-upload:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px var(--electric-blue);
         }
-        .nav-links a:hover {
-            color: #6c5ce7;
+
+        /* Controls */
+        .cyber-controls {
+            background: rgba(0,0,0,0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid var(--neon-pink);
         }
-        /* Mobile Menu */
-        .mobile-menu-icon {
-            display: none;
-            font-size: 1.5rem;
+
+        .neon-range {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            background: #222;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .neon-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--matrix-green);
+            border-radius: 50%;
             cursor: pointer;
         }
-        .nav-links.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            background: white;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, #6c5ce7, #a363d9);
+
+        .cyber-button {
+            background: linear-gradient(45deg, var(--neon-pink), var(--cyber-purple));
             color: white;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .search-bar {
-            max-width: 600px;
-            margin: 2rem auto;
-            position: relative;
-        }
-        .search-input {
-            width: 100%;
             padding: 1rem 2rem;
-            border-radius: 30px;
             border: none;
-            font-size: 1rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 1rem 0;
         }
-        /* Tools Grid */
-        .tools-grid {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+
+        .cyber-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--neon-pink);
         }
-        .tool-card {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .tool-card:hover {
-            transform: translateY(-5px);
-        }
-        .tool-icon {
-            font-size: 2.5rem;
-            color: #6c5ce7;
-            margin-bottom: 1rem;
-        }
-        /* Categories */
-        .categories {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .category-card {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
+
+        /* Preview Section */
+        .hologram-preview {
+            border: 2px solid var(--electric-blue);
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 2rem 0;
+            background: rgba(0,0,0,0.3);
             position: relative;
             overflow: hidden;
         }
-        .category-card::before {
+
+        .hologram-preview::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: #6c5ce7;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--electric-blue), transparent);
+            animation: hologram 3s linear infinite;
         }
-        /* Newsletter */
-        .newsletter {
-            background: #6c5ce7;
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem;
+
+        @keyframes hologram {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        .newsletter-form {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
+
+        /* Owner Info */
+        .cyber-card {
+            background: rgba(0,0,0,0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid var(--neon-pink);
+            position: relative;
+            overflow: hidden;
         }
-        .newsletter-form input {
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 30px;
-            width: 300px;
+
+        .cyber-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-pink), var(--electric-blue), var(--matrix-green));
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
         }
-        .newsletter-form button {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 30px;
-            background: #fff;
-            color: #6c5ce7;
-            cursor: pointer;
+
+        @keyframes borderGlow {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
         }
-        .newsletter-form button:hover {
-            background: #f8f9fa;
-        }
-        /* Footer */
-        .footer {
-            background: #2d3436;
-            color: white;
-            padding: 4rem 2rem;
-            margin-top: 4rem;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .footer-section {
-            text-align: center;
-        }
-        .footer-section a {
-            color: #6c5ce7;
-            text-decoration: none;
-            display: block;
-            margin: 0.5rem 0;
-        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .container {
+                max-width: 100%;
+                padding: 10px;
             }
-            .mobile-menu-icon {
-                display: block;
+            
+            .cyber-upload {
+                padding: 1.5rem;
             }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .tools-grid {
-                grid-template-columns: 1fr;
+            
+            .cyber-button {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-content">
-            <a href="#" class="logo">Digital Toolkit</a>
-            <div class="nav-links">
-                <a href="#tools">Tools</a>
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <i class="fas fa-bars mobile-menu-icon"></i>
+    <div class="container">
+        <!-- Ad Slot -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4013351666765853"
+             data-ad-slot="YOUR_AD_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+
+        <header class="cyber-header glow-text">
+            <h1>🖼️ MANISH'S IMAGE MAGIC ✨</h1>
+            <p>Cyberpunk Style Image Processing Toolkit</p>
+        </header>
+
+        <div class="cyber-upload" id="dropZone">
+            <h2><i class="fas fa-cloud-upload-alt"></i> DRAG & DROP IMAGE</h2>
+            <p>Supported formats: JPG/PNG/WEBP</p>
+            <input type="file" id="fileInput" hidden accept="image/*">
         </div>
-    </nav>
-    <section class="hero">
-        <h1>Your All-in-One File Conversion Solution</h1>
-        <p>Convert, edit, and optimize images & PDFs with ease</p>
-        <div class="search-bar">
-            <input type="text" class="search-input" placeholder="Search for tools...">
+
+        <div class="cyber-controls">
+            <label class="glow-text">QUALITY CONTROL: <span id="qualityValue">80</span>%</label>
+            <input type="range" class="neon-range" id="quality" min="1" max="100" value="80">
+            <button class="cyber-button" onclick="compressImage()">
+                <i class="fas fa-rocket"></i> LAUNCH COMPRESSION
+            </button>
         </div>
-    </section>
-    <section class="categories" id="tools">
-        <div class="category-grid">
-            <div class="category-card">
-                <i class="fas fa-file-pdf tool-icon"></i>
-                <h3>PDF Tools</h3>
-                <p>Merge, split, compress, and convert PDF files</p>
-            </div>
-            <div class="category-card">
-                <i class="fas fa-image tool-icon"></i>
-                <h3>Image Tools</h3>
-                <p>Convert, resize, compress, and edit images</p>
-            </div>
-            <div class="category-card">
-                <i class="fas fa-tools tool-icon"></i>
-                <h3>Other Tools</h3>
-                <p>Document conversion and file utilities</p>
-            </div>
+
+        <div class="hologram-preview">
+            <img id="preview" style="max-width: 100%; border-radius: 10px;">
+            <a id="downloadLink" download style="display: none;">
+                <button class="cyber-button" style="margin-top: 1rem;">
+                    <i class="fas fa-download"></i> DOWNLOAD CYBER-OPTIMIZED IMAGE
+                </button>
+            </a>
         </div>
-    </section>
-    <section class="tools-grid">
-        <div class="tool-card">
-            <i class="fas fa-compress tool-icon"></i>
-            <h3>Image Compressor</h3>
-            <p>Reduce image file size without quality loss</p>
+
+        <div class="cyber-card">
+            <h3 class="glow-text"><i class="fas fa-id-card"></i> CYBER WARRIOR PROFILE</h3>
+            <p>🎮 Name: <span class="glow-text">Manish Bhaskar</span></p>
+            <p>🏰 adress: Kairwali, Neem Ka Thana, Sikar</p>
+            <p>📧 Matrix Mail: <a href="mailto:manishbhaskar261@gmail.com" style="color:var(--matrix-green);">manishbhaskar261@gmail.com</a></p>
+            <p>📱 mobile Link: <a href="tel:+918058822082" style="color:var(--electric-blue);">+91 80588 22082</a></p>
         </div>
-        <div class="tool-card">
-            <i class="fas fa-file-export tool-icon"></i>
-            <h3>PDF to Word</h3>
-            <p>Convert PDF documents to editable Word files</p>
-        </div>
-        <div class="tool-card">
-            <i class="fas fa-images tool-icon"></i>
-            <h3>Image Converter</h3>
-            <p>Convert between JPG, PNG, WEBP formats</p>
-        </div>
-        <div class="tool-card">
-            <i class="fas fa-merge tool-icon"></i>
-            <h3>PDF Merger</h3>
-            <p>Combine multiple PDF files into one</p>
-        </div>
-    </section>
-    <section class="newsletter">
-        <div class="newsletter-content">
-            <h2>Stay Updated</h2>
-            <p>Subscribe to receive updates about new tools and features</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email">
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </section>
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Digital Toolkit</h4>
-                <p>Your complete file conversion solution</p>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p>support@manishbhaskar261@gmail.com</p>
-                <p>+91 80588 22082</p>
-            </div>
-        </div>
-    </footer>
+
+        <!-- Footer Ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4013351666765853"
+             data-ad-slot="YOUR_AD_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+
     <script>
-        // Mobile menu toggle functionality
-        const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-        const navLinks = document.querySelector('.nav-links');
+        // Initialize AdMob
+        (adsbygoogle = window.adsbygoogle || []).push({});
 
-        mobileMenuIcon.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        // Image Compression Logic
+        const fileInput = document.getElementById('fileInput');
+        const dropZone = document.getElementById('dropZone');
+        const qualityInput = document.getElementById('quality');
+        const qualityValue = document.getElementById('qualityValue');
+        const preview = document.getElementById('preview');
+        const downloadLink = document.getElementById('downloadLink');
 
-        // Close mobile menu when a link is clicked
-        navLinks.addEventListener('click', () => {
-            if (window.innerWidth < 768) {
-                navLinks.classList.remove('active');
+        let selectedFile = null;
+
+        // Event Listeners
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => e.preventDefault());
+        dropZone.addEventListener('drop', handleDrop);
+        qualityInput.addEventListener('input', updateQuality);
+        fileInput.addEventListener('change', handleFileSelect);
+
+        function updateQuality() {
+            qualityValue.textContent = qualityInput.value;
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            handleFile(e.dataTransfer.files[0]);
+        }
+
+        function handleFileSelect(e) {
+            handleFile(e.target.files[0]);
+        }
+
+        function handleFile(file) {
+            if (!file?.type.startsWith('image/')) {
+                alert('INVALID FILE TYPE! ONLY IMAGE FILES ACCEPTED.');
+                return;
             }
-        });
+            selectedFile = file;
+            preview.src = URL.createObjectURL(file);
+        }
+
+        function compressImage() {
+            if (!selectedFile) {
+                alert('NO FILE DETECTED! PLEASE UPLOAD IMAGE FIRST.');
+                return;
+            }
+
+            const quality = qualityInput.value / 100;
+            const img = new Image();
+            
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    downloadLink.href = url;
+                    downloadLink.download = `cyber_${selectedFile.name}`;
+                    downloadLink.style.display = 'block';
+
+                    // Show compression stats
+                    const original = (selectedFile.size/1024).toFixed(2);
+                    const compressed = (blob.size/1024).toFixed(2);
+                    alert(`⚡ CYBER COMPRESSION COMPLETE!\n\nOriginal: ${original} KB\nCompressed: ${compressed} KB`);
+                }, selectedFile.type, quality);
+            };
+
+            img.src = URL.createObjectURL(selectedFile);
+        }
     </script>
 </body>
-</html>                                                              </
+</html>

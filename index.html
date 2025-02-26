@@ -1,89 +1,185 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manish Bhaskar PDF Toolkit</title>
-    <meta name="description" content="Free PDF Tools by Manish Bhaskar - Merge, Split, Compress, Convert PDF Files">
-    
-    <!-- Google AdMob -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4013351666765853" crossorigin="anonymous"></script>
-
+    <title>AI Resume & Cover Letter Generator</title>
     <style>
-        /* ... (previous CSS styles remain same) ... */
-
-        /* Owner Details Section */
-        .owner-details {
-            background: #ffffff;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            margin: 0;
+            padding: 20px;
             text-align: center;
+            color: white;
         }
-
-        .owner-info {
-            margin: 1rem 0;
-            line-height: 1.8;
+        .container {
+            max-width: 650px;
+            background: white;
+            color: black;
+            padding: 25px;
+            margin: auto;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: left;
         }
-
-        .owner-email {
-            color: #2c3e50;
-            text-decoration: none;
+        h2 {
+            text-align: center;
+            color: #ff5733;
+        }
+        label {
             font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid #ff5733;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: linear-gradient(to right, #ff5733, #ffb142);
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background: linear-gradient(to right, #ff471a, #ff9800);
+        }
+        #output {
+            display: none;
+            margin-top: 20px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        #resumeOutput h2 {
+            color: #ff5733;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Top Ad Section -->
-        <div class="ad-section">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-4013351666765853"
-                 data-ad-slot="1234567890"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
+        <h2>AI Resume & Cover Letter Generator</h2>
+        <form id="resumeForm">
+            <label>Full Name:</label>
+            <input type="text" id="fullName" required>
 
-        <header class="header">
-            <h1>Manish Bhaskar PDF Toolkit</h1>
-            <p>Professional PDF Tools - Free & Secure</p>
-        </header>
+            <label>Email:</label>
+            <input type="email" id="email" required>
 
-        <!-- ... (tool grid remains same) ... -->
+            <label>Phone:</label>
+            <input type="text" id="phone" required>
 
-        <!-- Bottom Ad Section -->
-        <div class="ad-section">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-4013351666765853"
-                 data-ad-slot="0987654321"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
+            <label>LinkedIn Profile:</label>
+            <input type="text" id="linkedin">
 
-        <!-- Owner Details -->
-        <div class="owner-details">
-            <h3>Owner & Contact Details</h3>
-            <div class="owner-info">
-                <p>📌 Manish Bhaskar</p>
-                <p>🏠 Kairwali, Neem Ka Thana<br>
-                   Sikar, Rajasthan (332709)</p>
-                <p>📧 <a href="mailto:manishbhaskar261@gmail.com" class="owner-email">manishbhaskar261@gmail.com</a></p>
-            </div>
-            <p>⏰ Support Time: 10 AM - 6 PM (IST)</p>
+            <label>Target Job Title:</label>
+            <input type="text" id="jobTitle" required>
+
+            <label>Work Experience (Company, Role, Dates, Achievements):</label>
+            <textarea id="experience" required></textarea>
+
+            <label>Education (Degree, Institution, Dates):</label>
+            <textarea id="education" required></textarea>
+
+            <label>Technical/Hard Skills:</label>
+            <input type="text" id="hardSkills" required>
+
+            <label>Soft Skills:</label>
+            <input type="text" id="softSkills">
+
+            <label>Certifications, Awards, Languages:</label>
+            <textarea id="certifications"></textarea>
+
+            <label>Job Description Keywords (for ATS Optimization):</label>
+            <textarea id="keywords"></textarea>
+
+            <label>Company Name (for Cover Letter):</label>
+            <input type="text" id="companyName">
+
+            <label>Hiring Manager Name:</label>
+            <input type="text" id="hiringManager">
+
+            <button type="button" onclick="generateResume()">Generate Resume & Cover Letter</button>
+        </form>
+
+        <div id="output">
+            <button onclick="downloadPDF()">Download as PDF</button>
+            <div id="resumeOutput"></div>
         </div>
     </div>
 
     <script>
-        // ... (previous JavaScript code remains same) ... 
+        function generateResume() {
+            const fullName = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const linkedin = document.getElementById("linkedin").value;
+            const jobTitle = document.getElementById("jobTitle").value;
+            const experience = document.getElementById("experience").value;
+            const education = document.getElementById("education").value;
+            const hardSkills = document.getElementById("hardSkills").value;
+            const softSkills = document.getElementById("softSkills").value;
+            const certifications = document.getElementById("certifications").value;
+            const keywords = document.getElementById("keywords").value;
+            const companyName = document.getElementById("companyName").value;
+            const hiringManager = document.getElementById("hiringManager").value;
+
+            const resumeHTML = `
+                <h2>${fullName}</h2>
+                <p>Email: ${email} | Phone: ${phone} | LinkedIn: ${linkedin}</p>
+                <h3>Professional Summary</h3>
+                <p>Experienced ${jobTitle} with a proven track record in ${keywords}.</p>
+                
+                <h3>Work Experience</h3>
+                <p>${experience}</p>
+
+                <h3>Education</h3>
+                <p>${education}</p>
+
+                <h3>Skills</h3>
+                <p><strong>Technical:</strong> ${hardSkills}</p>
+                <p><strong>Soft:</strong> ${softSkills}</p>
+
+                <h3>Certifications & Awards</h3>
+                <p>${certifications}</p>
+
+                <hr>
+
+                <h2>Cover Letter</h2>
+                <p>Dear ${hiringManager || "Hiring Manager"},</p>
+                <p>I am excited to apply for the ${jobTitle} position at ${companyName}. My experience in ${keywords} makes me a great fit.</p>
+                <p>In my previous roles, I have ${experience.split(".")[0]}. I am eager to bring this expertise to your team.</p>
+                <p>Thank you for your time. I look forward to the opportunity to discuss further.</p>
+                <p>Best Regards,<br>${fullName}</p>
+            `;
+
+            document.getElementById("resumeOutput").innerHTML = resumeHTML;
+            document.getElementById("output").style.display = "block";
+        }
+
+        function downloadPDF() {
+            const resumeContent = document.getElementById("resumeOutput").innerHTML;
+            const blob = new Blob([resumeContent], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Resume.html";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
     </script>
 </body>
 </html>

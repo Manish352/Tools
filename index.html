@@ -3,122 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Resume & Cover Letter Generator</title>
+    <title>NeuroVoice - AI Voice Cloning</title>
     <style>
+        /* Modern Gradient Background */
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
             margin: 0;
-            padding: 20px;
-            text-align: center;
-            color: white;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
         }
+
+        /* Glassmorphism Container */
         .container {
-            max-width: 650px;
-            background: white;
-            color: black;
-            padding: 25px;
-            margin: auto;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            text-align: left;
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
         }
-        h2 {
+
+        /* Holographic Header */
+        h1 {
             text-align: center;
-            color: #ff5733;
+            font-size: 3.5em;
+            background: linear-gradient(45deg, #00ff88, #00ffee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 238, 0.3);
         }
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
+
+        /* Sci-Fi Control Panel */
+        .control-panel {
+            display: grid;
+            gap: 20px;
+            padding: 30px;
         }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 2px solid #ff5733;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        button {
-            background: linear-gradient(to right, #ff5733, #ffb142);
-            color: white;
-            padding: 12px;
-            width: 100%;
-            border: none;
-            font-size: 18px;
-            border-radius: 5px;
+
+        /* Glowing Button */
+        .btn-glow {
+            background: #00ff8855;
+            border: 2px solid #00ff88;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
             cursor: pointer;
-            margin-top: 15px;
+            transition: all 0.3s;
         }
-        button:hover {
-            background: linear-gradient(to right, #ff471a, #ff9800);
+
+        .btn-glow:hover {
+            background: #00ff88;
+            box-shadow: 0 0 30px #00ff8888;
+            transform: scale(1.05);
         }
-        #output {
+
+        /* Neural Network Animation */
+        .nn-animation {
+            height: 200px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 50 Q 25 0 50 50 T 100 50" stroke="%2300ff8888" fill="none" stroke-width="1"/></svg>');
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        /* Loading Quantum Animation */
+        .quantum-loader {
             display: none;
-            margin-top: 20px;
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: left;
+            position: relative;
+            height: 4px;
+            background: #ffffff22;
+            border-radius: 2px;
+            overflow: hidden;
         }
-        #resumeOutput h2 {
-            color: #ff5733;
+
+        .quantum-loader::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            animation: loading 2s infinite;
+        }
+
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>AI Resume & Cover Letter Generator</h2>
-        <form id="resumeForm">
-            <label>Full Name:</label>
-            <input type="text" id="fullName" required>
+        <h1>NEUROVOICE</h1>
+        
+        <div class="control-panel">
+            <div class="nn-animation"></div>
+            
+            <select class="btn-glow" style="appearance: none; text-align: center;">
+                <option>Select Voice Profile</option>
+                <option>My Clone Voice</option>
+                <option>Celebrity Voice</option>
+                <option>Custom Voice</option>
+            </select>
 
-            <label>Email:</label>
-            <input type="email" id="email" required>
+            <button class="btn-glow" id="recordBtn">
+                🎤 Start Neural Recording
+            </button>
 
-            <label>Phone:</label>
-            <input type="text" id="phone" required>
+            <div class="quantum-loader"></div>
 
-            <label>LinkedIn Profile:</label>
-            <input type="text" id="linkedin">
-
-            <label>Target Job Title:</label>
-            <input type="text" id="jobTitle" required>
-
-            <label>Work Experience (Company, Role, Dates, Achievements):</label>
-            <textarea id="experience" required></textarea>
-
-            <label>Education (Degree, Institution, Dates):</label>
-            <textarea id="education" required></textarea>
-
-            <label>Technical/Hard Skills:</label>
-            <input type="text" id="hardSkills" required>
-
-            <label>Soft Skills:</label>
-            <input type="text" id="softSkills">
-
-            <label>Certifications, Awards, Languages:</label>
-            <textarea id="certifications"></textarea>
-
-            <label>Job Description Keywords (for ATS Optimization):</label>
-            <textarea id="keywords"></textarea>
-
-            <label>Company Name (for Cover Letter):</label>
-            <input type="text" id="companyName">
-
-            <label>Hiring Manager Name:</label>
-            <input type="text" id="hiringManager">
-
-            <button type="button" onclick="generateResume()">Generate Resume & Cover Letter</button>
-        </form>
-
-        <div id="output">
-            <button onclick="downloadPDF()">Download as PDF</button>
-            <div id="resumeOutput"></div>
+            <div id="result" style="display: none;">
+                <h3>Cloned Output:</h3>
+                <audio controls style="width: 100%;"></audio>
+            </div>
         </div>
     </div>
 
     <script>
-        function generateResume() {
-            const fullName = document.getElementById("fullN              </
+        // Audio Recording Simulation
+        let isRecording = false;
+        const recordBtn = document.getElementById('recordBtn');
+        const loader = document.querySelector('.quantum-loader');
+        const resultDiv = document.getElementById('result');
+
+        recordBtn.addEventListener('click', async () => {
+            if (!isRecording) {
+                // Start recording
+                isRecording = true;
+                recordBtn.innerHTML = '🛑 Stop Recording';
+                loader.style.display = 'block';
+                
+                // Simulate AI processing
+                setTimeout(() => {
+                    isRecording = false;
+                    recordBtn.innerHTML = '🎤 Start Neural Recording';
+                    loader.style.display = 'none';
+                    resultDiv.style.display = 'block';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

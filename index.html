@@ -1,340 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>World-Class AI Resume Builder & Career Platform | #1 Worldwide</title>
-  <meta name="description" content="Create a world-class resume with our #1 AI-powered resume builder. Get expert career advice, portfolio integration, and job insights for free!" />
-  <meta name="keywords" content="AI Resume Builder, Best Free Resume Maker, Career Coach AI, Portfolio Integration, Job Market Insights, Professional CV Maker, Worldwide Resume Platform" />
-  <style>
-    /* Modern Color Scheme */
-    :root {
-      --primary: #1e40af; /* डीप ब्लू */
-      --secondary: #60a5fa; /* ब्राइट ब्लू */
-      --accent: #facc15; /* वाइब्रेंट येलो */
-      --dark: #0f172a; /* रिच ब्लैक */
-      --light: #f1f5f9; /* सॉफ्ट व्हाइट */
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { 
-      font-family: 'Segoe UI', system-ui, sans-serif; 
-      line-height: 1.6; 
-      background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%); /* 3D ग्रेडिएंट */
-      color: var(--dark);
-      perspective: 1000px; /* 3D इफेक्ट के लिए */
-    }
-    
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 2rem 1rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* डीप शैडो */
-      transform: translateZ(20px); /* 3D लिफ्ट */
-      border-radius: 0 0 20px 20px; /* स्मूद कर्व्स */
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 3D बटन */
-      transition: all 0.3s ease;
-      transform: translateZ(10px);
-    }
-
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateZ(15px) scale(1.05); /* 3D होवर */
-    }
-
-    section {
-      background: white;
-      padding: 2.5rem;
-      margin: 1.5rem 0;
-      border-radius: 1.5rem; /* स्मूदर कर्व्स */
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* डीप 3D शैडो */
-      border-left: 6px solid var(--accent); /* बोल्डर एक्सेंट */
-      transform: translateZ(10px); /* 3D डेप्थ */
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    section:hover {
-      transform: translateZ(20px) translateY(-10px); /* 3D लिफ्ट */
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); /* बड़ा शैडो */
-    }
-
-    /* Modern Form Styles */
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    input, textarea, button {
-      padding: 0.8rem;
-      border: 2px solid #e2e8f0;
-      border-radius: 0.5rem;
-      background: #fff;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 3D इनपुट */
-      transition: all 0.3s ease;
-      transform: translateZ(5px);
-    }
-
-    input:focus, textarea:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
-      transform: translateZ(10px); /* 3D फोकस */
-    }
-
-    button {
-      background: var(--primary);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* 3D बटन */
-      transform: translateZ(10px);
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: var(--secondary);
-      transform: translateZ(15px) scale(1.1); /* 3D होवर */
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
-    }
-
-    /* Chat Interface */
-    .chat-container {
-      background: white;
-      border-radius: 1.5rem;
-      height: 400px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* 3D चैट */
-      transform: translateZ(10px);
-    }
-
-    #chatMessages {
-      flex: 1;
-      padding: 1rem;
-      overflow-y: auto;
-      background: #f8fafc;
-    }
-
-    .chat-input {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem;
-      border-top: 2px solid #e2e8f0;
-    }
-
-    .message {
-      margin: 0.5rem 0;
-      padding: 0.8rem;
-      border-radius: 0.5rem;
-      max-width: 80%;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* 3D मैसेज */
-      transform: translateZ(5px);
-    }
-
-    .user-message {
-      background: var(--primary);
-      color: white;
-      margin-left: auto;
-    }
-
-    .bot-message {
-      background: #e2e8f0;
-      margin-right: auto;
-    }
-
-    /* Keyword List */
-    .keyword-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .keyword-chip {
-      background: #e2e8f0;
-      padding: 0.5rem 1rem;
-      border-radius: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 3D चिप्स */
-      transform: translateZ(5px);
-      transition: transform 0.3s ease;
-    }
-
-    .keyword-chip:hover {
-      transform: translateZ(10px); /* 3D होवर */
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      main {
-        padding: 1rem;
-      }
-      
-      section {
-        padding: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Hub - Manish Bhaskar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
-<body>
-  <header>
-    <h1 style="font-size: 2.5rem; letter-spacing: -0.05em;">AI Resume & Career Platform</h1>
-    <nav>
-      <ul>
-        <li><a href="#resume-generator">Resume Builder</a></li>
-        <li><a href="#career-coach">Career Coach</a></li>
-        <li><a href="#portfolio-integration">Portfolio</a></li>
-        <li><a href="#chatbot">AI Chat</a></li>
-      </ul>
-    </nav>
-  </header>
+<body class="bg-gray-100">
+    
+    <!-- Header -->
+    <header class="bg-purple-600 text-white p-4 text-center">
+        <h1 class="text-3xl font-bold">AI Career Hub</h1>
+        <p class="mt-2">By Manish Bhaskar</p>
+    </header>
 
-  <main>
-    <!-- Resume Generator Section -->
-    <section id="resume-generator">
-      <h2 style="color: var(--primary);">AI-Powered Resume Builder</h2>
-      <form id="resumeForm" class="form-grid">
-        <!-- Form fields same as before -->
-      </form>
-    </section>
-
-    <!-- Chatbot Section -->
-    <section id="chatbot">
-      <h2 style="color: var(--secondary);">AI Career Assistant</h2>
-      <div class="chat-container">
-        <div id="chatMessages">
-          <div class="message bot-message">Hello! I'm your AI career assistant. How can I help you today?</div>
+    <!-- Donation Section -->
+    <div class="container mx-auto p-4">
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">Support Us via UPI</h2>
+            <img src="1000000046.png" alt="UPI QR Code" class="mx-auto w-48 h-48 border-4 border-purple-200 rounded-lg">
+            <p class="mt-4 font-mono bg-purple-100 p-2 rounded">UPI ID: bhaskar8058@ybl</p>
         </div>
-        <div class="chat-input">
-          <input type="text" id="userInput" placeholder="Type your question...">
-          <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <!-- AI Chat Bot -->
+    <div class="chatbot fixed bottom-4 right-4 bg-white rounded-lg shadow-xl w-80">
+        <div class="bg-purple-600 text-white p-4 rounded-t-lg flex justify-between">
+            <span>Career Assistant</span>
+            <button onclick="toggleChat()">×</button>
         </div>
-      </div>
-    </section>
+        <div class="chat-area h-64 p-4 overflow-y-auto">
+            <div class="bot-msg">Hi! Ask me about resumes, jobs, or careers.</div>
+        </div>
+        <div class="input-area p-4">
+            <input type="text" placeholder="Type your question..." class="w-full p-2 border rounded">
+            <button onclick="sendMessage()" class="mt-2 bg-purple-600 text-white px-4 py-2 rounded">Send</button>
+        </div>
+    </div>
 
-    <!-- AdMob Advertisement -->
-    <section id="admob-ad">
-      <h2 style="color: var(--primary);">Sponsored Content</h2>
-      <div style="text-align: center; padding: 1rem;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4013351666765853" crossorigin="anonymous"></script>
-        <!-- डिस्प्ले एड यूनिट -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-4013351666765853"
-             data-ad-slot="1234567890" <!-- अपनी Ad Unit ID डालें -->
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-    </section>
+    <!-- Owner Info Footer -->
+    <footer class="bg-gray-800 text-white mt-8 py-4 text-center">
+        <p>Owner: Manish Bhaskar</p>
+        <p>Email: manishbhaskar261@gmail.com</p>
+        <p class="mt-2">© 2024 All Rights Reserved</p>
+    </footer>
 
-    <!-- Portfolio Integration with QR Code -->
-    <section id="portfolio-integration">
-      <h2 style="color: var(--primary);">Portfolio Integration</h2>
-      <p>Connect your GitHub portfolio seamlessly.</p>
-      <div style="text-align: center; padding: 1rem;">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/yourusername" alt="GitHub QR Code" />
-        <p>Scan to visit my GitHub!</p>
-      </div>
-    </section>
-
-    <!-- SEO Keywords Section -->
-    <section id="keywords">
-      <h2 style="color: var(--accent);">Top Optimization Keywords</h2>
-      <div class="keyword-grid">
-        <div class="keyword-chip">World-Class Resume Builder</div>
-        <div class="keyword-chip">Best AI CV Maker</div>
-        <div class="keyword-chip">Top Career Coach AI</div>
-        <div class="keyword-chip">Job Market Insights 2025</div>
-        <div class="keyword-chip">ATS Optimized Resume</div>
-        <div class="keyword-chip">Free Cover Letter Generator</div>
-      </div>
-    </section>
-
-    <!-- Function List -->
-    <section id="functions">
-      <h2>Platform Features</h2>
-      <ul style="list-style: none; line-height: 2;">
-        <li>✅ AI-Powered Resume Generation</li>
-        <li>✅ Smart Cover Letter Creator</li>
-        <li>✅ Real-time ATS Score Check</li>
-        <li>✅ Job Market Insights Dashboard</li>
-        <li>✅ 24/7 AI Career Assistant</li>
-        <li>✅ Multi-Platform Portfolio Integration</li>
-      </ul>
-    </section>
-  </main>
-
-  <script>
-    // Enhanced Chatbot Functionality
-    const chatMessages = document.getElementById('chatMessages');
-    const userInput = document.getElementById('userInput');
-
-    const botResponses = {
-      "resume": "Our AI resume builder analyzes job descriptions and optimizes your resume for ATS systems. Try uploading your current resume for instant feedback!",
-      "cover letter": "The cover letter generator uses NLP to match your skills with job requirements. Provide the job description for best results.",
-      "salary": "Based on your profile and location, the average salary range for your position is: $65k - $95k",
-      "help": "I can help with: resume tips, cover letter samples, interview prep, and salary negotiations. Ask me anything!",
-      "default": "I'm here to help with your career development. Ask me about resume building, job search strategies, or career planning!"
-    };
-
-    function sendMessage() {
-      const message = userInput.value.trim();
-      if (!message) return;
-
-      // Add user message
-      chatMessages.innerHTML += `
-        <div class="message user-message">${message}</div>
-      `;
-
-      // Process message
-      const lowerMessage = message.toLowerCase();
-      let response = botResponses.default;
-      
-      Object.keys(botResponses).forEach(key => {
-        if (lowerMessage.includes(key)) {
-          response = botResponses[key];
-        }
-      });
-
-      // Simulate typing effect
-      setTimeout(() => {
-        chatMessages.innerHTML += `
-          <div class="message bot-message">${response}</div>
-        `;
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }, 1000);
-
-      userInput.value = '';
-    }
-
-    // Handle Enter key
-    userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendMessage();
-    });
-
-    // Existing resume generation functions...
-  </script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </body>
 </html>

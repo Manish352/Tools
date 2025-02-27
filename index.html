@@ -1,57 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuroVoice - AI Voice Cloning</title>
-    <style>
-        /* Modern Gradient Background */
-        body {
-            margin: 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
-            min-height: 100vh;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World-Class AI Resume & Career Platform</title>
+  <meta name="description" content="Build your professional resume and cover letter with our AI-powered generator. Get personalized career advice, portfolio integration, and job market insights." />
+  <meta name="keywords" content="Free Resume Builder Online, AI Resume Generator, Best Free Resume Maker, AI Career Coach, Portfolio Integration, Job Market Insights, Professional Resume Templates, Free CV Maker with AI" />
+  <style>
+    /* Basic Reset & Typography */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; background: #f4f4f4; color: #333; }
+    header, footer { background: #333; color: #fff; padding: 20px 10px; text-align: center; }
+    main { padding: 20px; max-width: 1000px; margin: auto; }
+    h1, h2, h3 { margin-bottom: 15px; }
+    section { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    /* Navigation (if needed) */
+    nav ul { list-style: none; display: flex; justify-content: center; }
+    nav ul li { margin: 0 10px; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
+    /* Form Styles */
+    form label { display: block; margin-bottom: 5px; font-weight: bold; }
+    form input, form textarea, form button { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    form button { background: #333; color: #fff; border: none; cursor: pointer; }
+    form button:hover { background: #555; }
+    /* Chatbot Section */
+    #chatInterface { border: 1px solid #ccc; padding: 10px; border-radius: 4px; height: 300px; overflow-y: auto; background: #fafafa; }
+    /* Donation Section */
+    #donation img { max-width: 150px; display: block; margin: 10px auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Resume & Career Platform</h1>
+    <nav>
+      <ul>
+        <li><a href="#resume-generator">Resume</a></li>
+        <li><a href="#career-coach">Career Coach</a></li>
+        <li><a href="#portfolio-integration">Portfolio</a></li>
+        <li><a href="#job-market">Job Market</a></li>
+        <li><a href="#donation">Donate</a></li>
+        <li><a href="#chatbot">Chatbot</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        /* Glassmorphism Container */
-        .container {
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-        }
+  <main>
+    <!-- Resume & Cover Letter Generator Section -->
+    <section id="resume-generator">
+      <h2>AI Resume & Cover Letter Generator</h2>
+      <form id="resumeForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" placeholder="Enter your full name" required />
 
-        /* Holographic Header */
-        h1 {
-            text-align: center;
-            font-size: 3.5em;
-            background: linear-gradient(45deg, #00ff88, #00ffee);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(0, 255, 238, 0.3);
-        }
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
 
-        /* Sci-Fi Control Panel */
-        .control-panel {
-            display: grid;
-            gap: 20px;
-            padding: 30px;
-        }
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" placeholder="Enter your phone number" required />
 
-        /* Glowing Button */
-        .btn-glow {
-            background: #00ff8855;
-            border: 2px solid #00ff88;
-            color: #fff;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transi
+        <label for="linkedin">LinkedIn Profile:</label>
+        <input type="url" id="linkedin" placeholder="Your LinkedIn URL" />
+
+        <label for="jobTitle">Target Job Title:</label>
+        <input type="text" id="jobTitle" placeholder="e.g., Software Engineer" required />
+
+        <label for="experience">Work Experience:</label>
+        <textarea id="experience" rows="4" placeholder="Company, Role, Dates, Achievements" required></textarea>
+
+        <label for="education">Education:</label>
+        <textarea id="education" rows="3" placeholder="Degree, Institution, Dates" required></textarea>
+
+        <label for="hardSkills">Technical/Hard Skills:</label>
+        <input type="text" id="hardSkills" placeholder="e.g., JavaScript, Python" required />
+
+        <label for="softSkills">Soft Skills:</label>
+        <input type="text" id="softSkills" placeholder="e.g., Communication, Leadership" />
+
+        <label for="certifications">Certifications, Awards, Languages:</label>
+        <textarea id="certifications" rows="3" placeholder="List them here"></textarea>
+
+        <label for="keywords">Job Description Keywords:</label>
+        <textarea id="keywords" rows="2" placeholder="e.g., Agile, Full-Stack, AI" required></textarea>
+
+        <!-- Optional fields for cover letter -->
+        <label for="companyName">Company Name (for Cover Letter):</label>
+        <input type="text" id="companyName" placeholder="Company Name" />
+
+        <label for="hiringManager">Hiring Manager Name:</label>
+        <input type="text" id="hiringManager" placeholder="Hiring Manager Name" />
+
+        <button type="button" onclick="generateResume()">Generate Resume & Cover Letter</button>
+      </form>
+      <div id="resumeOutput" style="display:none; margin-top:20px;">
+        <!-- Resume output will be injected here -->
+      </div>
+    </section>
+
+    <!-- AI Career Coach Section -->
+    <section id="career-coach">
+      <h2>AI Career Coach</h2>
+      <p>Get personalized career advice and salary tips based on your resume data. Our AI analyzes your resume and suggests improvements along with target salary ranges for your role.</p>
+    </section>
+
+    <!-- Portfolio Integration Section -->
+    <section id="portfolio-integration">
+      <h2>Portfolio Integration</h2>
+      <p>Embed your professional profiles from LinkedIn, GitHub, or Behance into your resume for a comprehensive professional presence.</p>
+      <p>Simply provide your profile URLs in the resume form above.</p>
+    </section>
+
+    <!-- Job Market Insights Dashboard (Static Data) -->
+    <section id="job-market">
+      <h2>Job Market Insights</h2>
+      <p>Discover trending skills and top employers based on current market data. (Static information for now – will be updated with live data in future versions.)</p>
+      <ul>
+        <li>Trending Skills: AI, Machine Learning, Cloud Computing, Cybersecurity</li>
+        <li>Top Employers: Google, Microsoft, Amazon, TCS, Infosys</li>
+      </ul>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donation">
+      <h2>Support Our Mission</h2>
+      <p>Your donation helps us assist the poor and bring positive change. Every contribution counts!</p>
+      <p><strong>Donate via UPI:</strong> bhaskar8058@ybl</p>
+      <!-- Replace 'qr-code.png' with the actual path to your QR code image -->
+      <img src="qr-code.png" alt="Donation QR Code" />
+    </section>
+
+    <!-- AI Chatbot Section -->
+    <section id="chatbot">
+      <h2>Need Assistance? Ask Our Chatbot</h2>
+      <div id="chatInterface">
+        <!-- A simple chat interface (further AI integration needed for dynamic responses) -->
+        <p><em>Chatbot is loading... (This is a placeholder for the AI-powered chatbot that will provide resume tips, career advice, and answer FAQs.)</em></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AI Resume & Career Platform. All rights reserved.</p>
+    <p>Owner: Manish Bhaskar | Email: <a href="mailto:manishbhaskar261@gmail.com" style="color: #fff;">manishbhaskar261@gmail.com</a> | <a href="https://www.instagram.com/official_manish_jat07?igsh=Y20wcWlycm94eXJw" target="_blank" style="color: #fff;">Instagram</a></p>
+  </footer>
+
+  <script>
+    // JavaScript for Resume & Cover Letter Generation
+    function generateResume() {
+      const fullName = document.getElementById("fullName").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const linkedin = document.getElementById("linkedin").value;
+      const jobTitle = document.getElementById("jobTitle").value;
+      const experience = document.getElementById("experience").value;
+      const education = document.getElementById("education").value;
+      const hardSkills = document.getElementById("hardSkills").value;
+      const softSkills = document.getElementById("softSkills").value;
+      const certifications = document.getElementById("certifications").value;
+      const keywords = document.getElementById("keywords").value;
+      const companyName = document.getElementById("companyName").value;
+      const hiringManager = document.getElementById("hiringManager").value;
+
+      // Basic resume content generation (to be enhanced with AI logic)
+      const resumeHTML = `
+        <h2>${fullName}</h2>
+        <p>Email: ${email} | Phone: ${phone} | LinkedIn: ${linkedin}</p>
+        <h3>Professional Summary</h3>
+        <p>Experienced ${jobTitle} with expertise in ${keywords}. Proven track record in delivering results and excellence.</p>
+        <h3>Work Experience</h3>
+        <p>${experience}</p>
+        <h3>Education</h3>
+        <p>${education}</p>
+        <h3>Skills</h3>
+        <p><strong>Technical:</strong> ${hardSkills}</p>
+        <p><strong>Soft:</strong> ${softSkills}</p>
+        <h3>Certifications & Awards</h3>
+        <p>${certifications}</p>
+        <hr>
+        <h2>Cover Letter</h2>
+        <p>Dear ${hiringManager || "Hiring Manager"},</p>
+        <p>I am excited to apply for the ${jobTitle} position at ${companyName || "your company"}. My background in ${keywords} makes me a strong candidate for this role.</p>
+        <p>In my previous roles, I have demonstrated my ability to deliver high-quality results. I am confident that my skills and experience make me a perfect fit for your team.</p>
+        <p>Thank you for considering my application. I look forward to the opportunity to discuss further.</p>
+        <p>Best Regards,<br>${fullName}</p>
+      `;
+      
+      document.getElementById("resumeOutput").innerHTML = resumeHTML;
+      document.getElementById("resumeOutput").style.display = "block";
+    }
+
+    // Placeholder for AI Chatbot functionality
+    // Future enhancement: integrate with an AI API for dynamic responses.
+  </script>
+</body>
 </html>

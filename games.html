@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>रंगीन गेमिंग वेबसाइट</title>
+    <style>
+        /* रंगीन स्टाइल */
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .game-card {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.3);
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+
+        /* गेम्स के स्टाइल */
+        #tictactoe {
+            display: none;
+        }
+
+        .tic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .tic-cell {
+            background: rgba(255,255,255,0.3);
+            height: 100px;
+            border: none;
+            border-radius: 10px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎮 मस्त गेम्स हब 🕹️</h1>
+        <p>क्लिक करके गेम चुनें और खेलें!</p>
+    </div>
+
+    <!-- मुख्य मेन्यू -->
+    <div class="game-container" id="mainMenu">
+        <div class="game-card" onclick="showGame('tictactoe')">
+            <h2>❌ Tic Tac Toe ⭕</h2>
+            <p>पुराना लेकिन गोल्ड!</p>
+        </div>
+
+        <div class="game-card" onclick="showGame('snake')">
+            <h2>🐍 सांप वाला गेम</h2>
+            <p>सांप को बढ़ाओ!</p>
+        </div>
+
+        <div class="game-card" onclick="showGame('memory')">
+            <h2>🧠 याददाश्त गेम</h2>
+            <p>दिमाग की कसरत</p>
+        </div>
+    </div>
+
+    <!-- Tic Tac Toe गेम -->
+    <div id="tictactoe">
+        <button class="back-btn" onclick="showMainMenu()">← वापस जाएं</button>
+        <h2 style="text-align:center">Tic Tac Toe</h2>
+        <div class="tic-grid">
+            <button class="tic-cell" onclick="play(this)"></button>
+            <button class="tic-cell" onclick="play(this)"></button>
+            <button class="tic-cell" onclick="play(this)"></button>
+            <button class="tic-cell" onclick="play(this)"></button>
+            <button class="tic-cell" onclick="play(this)"></button>
+            <button class="tic-cell" onclick="play(this)"></button>
+            <button class="tic-cell" onclick="play(this)"></button>
+            <button class="tic-cell" onclick="play(this)"></button>
+            <button class="tic-cell" onclick="play(this)"></button>
+        </div>
+    </div>
+
+    <script>
+        // गेम दिखाने का लॉजिक
+        function showGame(gameId) {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById(gameId).style.display = 'block';
+        }
+
+        function showMainMenu() {
+            document.getElementById('mainMenu').style.display = 'grid';
+            document.getElementById('tictactoe').style.display = 'none';
+        }
+
+        // Tic Tac Toe लॉजिक
+        let currentPlayer = 'X';
+        let gameActive = true;
+
+        function play(cell) {
+            if(!gameActive || cell.textContent !== '') return;
+            
+            cell.textContent = currentPlayer;
+            cell.style.background = currentPlayer === 'X' ? '#ff6b6b' : '#4ecdc4';
+            
+            if(checkWin()) {
+                alert(currentPlayer + ' जीत गया! 🎉');
+                gameActive = false;
+                return;
+            }
+            
+            if(checkDraw()) {
+                alert('ड्रॉ! 🤝');
+                gameActive = false;
+                return;
+            }
+            
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+
+        function checkWin() {
+            const cells = document.querySelectorAll('.tic-cell');
+            const winPatterns = [
+                [0,1,2], [3,4,5], [6,7,8], // पंक्तियाँ
+                [0,3,6], [1,4,7], [2,5,8], // कॉलम
+                [0,4,8], [2,4,6] // डायगनल
+            ];
+
+            return winPatterns.some(pattern => 
+                pattern.every(index => 
+                    cells[index].textContent === currentPlayer
+                )
+            );
+        }
+
+        function checkDraw() {
+            return [...document.querySelectorAll('.tic-cell')]
+                   .every(cell => cell.textContent !== '');
+        }
+    </script>
+</body>
+</html>

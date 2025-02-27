@@ -1,0 +1,19 @@
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .chatbot {
+        width: 90% !important;
+        right: 5% !important;
+    }
+}
+
+.chatbot {
+    transition: all 0.3s;
+}
+
+.bot-msg {
+    background: #f1f5f9;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 8px 0;
+    display: inline-block;
+}

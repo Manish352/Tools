@@ -1,159 +1,280 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎥 Video Editing Masterclass - 3 सीट्स बची! ₹999 में पाएँ Job गारंटी</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tockify Timer -->
-    <script data-type="tockify" data-id="65f4f8a1c728bc3f4a0d3dab0e4a3c4a0aab4c2d">!function(e,t,s,a,n){e.ts=Date.now();e._tockifyScriptLoad=!0;var c=t.createElement(s);c.src=a,c.type="text/javascript",c.async=!0,t.getElementsByTagName(s)[0].parentNode.appendChild(c)}(window,document,"script","https://cdn.tockify.com/browser/notify.js");</script>
+    <title>Video Editing Mastery - ₹999 Only!</title>
     <style>
-        :root {
-            --primary: #FF6B6B;
-            --secondary: #4ECDC4;
-            --accent: #FFD93D;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            line-height: 1.8;
+        * {
             margin: 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 0;
+            font-family: 'Poppins', Arial, sans-serif;
         }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-
-        .header {
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1639754390580-2e7437267698?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
-            color: white;
-            background-size: cover;
+            padding: 80px 20px;
             position: relative;
+            animation: fadeIn 1s ease-in;
         }
-
-        .fomo-badge {
-            background: #e74c3c;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            animation: pulse 2s infinite;
+        header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        header p {
+            font-size: 1.4em;
+            margin-top: 10px;
+            opacity: 0.9;
         }
-
-        .cta-button {
-            background: linear-gradient(45deg, #27ae60, #219a52);
-            color: white !important;
-            padding: 18px;
+        .offer {
+            background: #ffe066;
+            text-align: center;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 900px;
             border-radius: 15px;
-            font-size: 1.3em;
-            text-decoration: none;
-            margin: 20px 0;
-            display: block;
-            width: 80%;
-            margin: auto;
-            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-20px);
+            animation: slideUp 1s ease-out;
         }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(39, 174, 96, 0.4);
+        .offer h2 {
+            color: #e63946;
+            font-size: 2.2em;
+            font-weight: 600;
         }
-
-        .feature-box {
-            display: flex;
-            align-items: center;
+        .offer p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .benefits {
+            max-width: 1100px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 0 20px;
+        }
+        .benefit-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .benefit-card h3 {
+            color: #457b9d;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .testimonials {
+            max-width: 1100px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .testimonials h2 {
+            font-size: 2.2em;
+            color: #1d3557;
+            margin-bottom: 30px;
+        }
+        .testimonial-card {
+            background: white;
             padding: 20px;
-            background: #f8f9fa;
-            margin: 15px;
-            border-radius: 15px;
+            margin: 15px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in;
         }
-
-        .feature-box i {
-            font-size: 40px;
-            margin-right: 20px;
-            color: var(--primary);
+        .faq {
+            max-width: 900px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 0 20px;
         }
-
-        .video-thumbnail {
-            width: 100%;
-            border-radius: 15px;
+        .faq h2 {
+            font-size: 2.2em;
+            color: #1d3557;
+            margin-bottom: 30px;
+        }
+        .faq-item {
             margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: left;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        }
+        .cta {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1d3557, #457b9d);
+            color: white;
+        }
+        .cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        .price .original {
+            text-decoration: line-through;
+            color: #ff9999;
+            font-size: 1.2em;
+        }
+        .price .discount {
+            color: #ffe066;
+            font-weight: 600;
+            font-size: 1.3em;
+        }
+        .price .final {
+            color: #fff;
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .cta a {
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.4em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .cta button:hover {
+            background: #e63946;
+            transform: scale(1.05);
+        }
+        .timer {
+            font-size: 1.6em;
+            margin-top: 25px;
+            color: #ffe066;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1d3557;
+            color: white;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(-20px); opacity: 1; }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="fomo-badge"><i class="fas fa-fire"></i> केवल 3 सीट्स बची!</div>
-            
-            <h1>🎬 Video Editing Masterclass</h1>
-            <p style="font-size:1.5em;">फ़्रीलांसिंग से ₹50k+/महीना कमाएँ</p>
-            
-            <!-- Tockify Timer -->
-            <div data-tockify-component="mini" data-tockify-theme="dark"></div>
+    <!-- Header -->
+    <header>
+        <h1>Video Editing Mastery</h1>
+        <p>Learn Pro Skills & Launch Your Career!</p>
+    </header>
+
+    <!-- Unique Offer -->
+    <section class="offer">
+        <h2>Market Mein Pehli Baar!</h2>
+        <p>Course kharido aur hum <strong>100 top influencers aur companies</strong> ko aapke talent ke baare mein email bhejenge!</p>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="benefit-card">
+            <h3>Pro Editing Skills</h3>
+            <p>Zero se pro tak – skills jo aapko standout banayengi.</p>
         </div>
-
-        <img src="https://via.placeholder.com/800x450?text=Canva+Video+Thumbnail+लगाएं" 
-             alt="Course Preview" 
-             class="video-thumbnail">
-
-        <div style="padding:20px; text-align:center;">
-            <a href="https://pages.razorpay.com/pl_Q8DtLK10R07XdT/view" 
-               class="cta-button">
-               <i class="fas fa-lock"></i> ENROLL NOW @ ₹999 (60% OFF!)
-            </a>
+        <div class="benefit-card">
+            <h3>Lifetime Access</h3>
+            <p>Ek baar pay karo, hamesha seekho – apne pace pe.</p>
         </div>
-
-        <div class="feature-box">
-            <i class="fas fa-video"></i>
-            <div>
-                <h3>Real Projects सीखें</h3>
-                <p>YouTube, Instagram & Ads Editing</p>
-            </div>
+        <div class="benefit-card">
+            <h3>Real Projects</h3>
+            <p>Hands-on practice ke saath real-world projects.</p>
         </div>
-
-        <div class="feature-box">
-            <i class="fas fa-users"></i>
-            <div>
-                <h3>200+ Hiring Partners</h3>
-                <p>आपका Resume भेजेंगे Top Companies को</p>
-            </div>
+        <div class="benefit-card">
+            <h3>Certificate</h3>
+            <p>Course khatam karo aur job-ready certificate lo.</p>
         </div>
+    </section>
 
-        <div style="background:var(--accent); padding:30px; text-align:center;">
-            <h2>⚠️ अंतिम चेतावनी!</h2>
-            <p>हर 10 मिनट में 1 सीट बुक हो रही है</p>
-            <div id="seat-counter" style="font-size:2em; font-weight:bold;">3 सीट्स बची</div>
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>What Students Say</h2>
+        <div class="testimonial-card">
+            <p>"2 hafton mein pro editing seekh li – amazing course!"</p>
+            <p><strong>- Ravi K.</strong></p>
         </div>
-    </div>
+        <div class="testimonial-card">
+            <p>"100 email offer ne mujhe ek bada project dilaya!"</p>
+            <p><strong>- Priya S.</strong></p>
+        </div>
+    </section>
 
+    <!-- FAQ -->
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>Course kitne time ka hai?</h3>
+            <p>Self-paced – aap 1-2 mahine mein pura kar sakte ho.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Emails kab bheje jayenge?</h3>
+            <p>Payment confirm hote hi 7 din ke andar.</p>
+        </div>
+    </section>
+
+    <!-- CTA with Fixed Buy Now -->
+    <section class="cta">
+        <h2>Grab This Deal Before It’s Gone!</h2>
+        <div class="price">
+            <span class="original">₹3999</span> 
+            <span class="discount">75% OFF</span> 
+            <span class="final">Now ₹999!</span>
+        </div>
+        <a href="https://rzp.io/rzp/KPMdBdBh" target="_blank" rel="noopener noreferrer"><button>Buy Now</button></a>
+        <div class="timer" id="countdown">Hurry! Offer Ends In: <span id="timer">24:00:00</span></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Maneesh Bhaskar. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Countdown Timer Script -->
     <script>
-        // Fake FOMO Seat Counter
-        let seats = 3;
+        let time = 24 * 60 * 60; // 24 hours in seconds
+        const timerElement = document.getElementById('timer');
         setInterval(() => {
-            if(seats > 0) {
-                seats--;
-                document.getElementById('seat-counter').innerHTML = 
-                    `${seats} सीट्स बची`;
-                if(seats === 0) seats = 3; // Reset after 0
-            }
-        }, 15000); // Every 15 seconds
+            let hours = Math.floor(time / 3600);
+            let minutes = Math.floor((time % 3600) / 60);
+            let seconds = time % 60;
+            timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            if (time > 0) time--;
+        }, 1000);
     </script>
 </body>
 </html>

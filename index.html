@@ -322,49 +322,39 @@
       document.getElementById('walletModal').style.display = 'none';
     }
 
-    // Detect if the user is on a mobile device
-    function isMobileDevice() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
-
     // Connect wallet (MetaMask or Trust Wallet)
     async function connectWallet(walletType) {
-      let provider = null;
+      console.log("Checking for window.ethereum...");
+      console.log("User Agent:", navigator.userAgent);
 
-      // Try to detect the provider
-      if (window.ethereum) {
-        provider = window.ethereum;
-      } else if (window.trustwallet) {
-        provider = window.trustwallet;
+      // Check if the user agent indicates Trust Wallet or MetaMask
+      const isTrustWallet = navigator.userAgent.includes("Trust Wallet") || navigator.userAgent.includes("TrustWallet");
+      const isMetaMask = navigator.userAgent.includes("MetaMask") || window.ethereum?.isMetaMask;
+
+      if (!window.ethereum) {
+        console.log("window.ethereum not found!");
+        let message = "Web3 wallet not found. ";
+
+        if (walletType === 'TrustWallet') {
+          if (!isTrustWallet) {
+            message += "Please open this page in the Trust Wallet DApp browser. Steps: 1. Open Trust Wallet app on your mobile. 2. Go to 'Browser' or 'Discover' section. 3. Copy this page's URL and paste it in the Trust Wallet browser. 4. Try connecting again.";
+          } else {
+            message += "Trust Wallet detected, but provider not found. Please ensure your Trust Wallet app is updated to the latest version, and try again.";
+          }
+        } else if (walletType === 'MetaMask') {
+          if (!isMetaMask) {
+            message += "Please open this page in the MetaMask DApp browser or install the MetaMask extension. Steps: 1. On mobile, open MetaMask app and use its browser. 2. On desktop, install MetaMask extension in your browser. 3. Copy this page's URL and open it in MetaMask browser. 4. Try connecting again.";
+          } else {
+            message += "MetaMask detected, but provider not found. Please ensure your MetaMask app/extension is updated to the latest version, and try again.";
+          }
+        }
+
+        alert(message);
+        closeWalletModal();
+        return;
       }
 
-      // If provider not found and trying to connect with Trust Wallet, attempt deep linking on mobile
-      if (!provider && walletType === 'TrustWallet' && isMobileDevice()) {
-        const deepLink = `trust://open_url?url=${encodeURIComponent(window.location.href)}`;
-        alert("Trust Wallet not detected. Redirecting to Trust Wallet app...");
-        window.location.href = deepLink;
-
-        // Fallback if deep link doesn't work
-        setTimeout(() => {
-          alert("If Trust Wallet didn't open, please manually open the Trust Wallet app, go to the DApp browser, and load this page.");
-        }, 2000);
-        closeWalletModal();
-        return;
-      } else if (!provider && walletType === 'TrustWallet') {
-        alert("Trust Wallet not detected. Please open this page in the Trust Wallet DApp browser. On mobile, use the Trust Wallet app's browser. On desktop, use a browser with Trust Wallet extension if available.");
-        closeWalletModal();
-        return;
-      } else if (!provider && walletType === 'MetaMask') {
-        alert("MetaMask not detected. Please install the MetaMask extension or use the MetaMask mobile app browser.");
-        closeWalletModal();
-        return;
-      }
-
+      console.log("window.ethereum found!");
+      const web3 = new Web3(window.ethereum);
       try {
-        const web3 = new Web3(provider);
-
-        // Request wallet connection
-        const accounts = await provider.request({ method: 'eth_requestAccounts' });
-        const sender = accounts[0];
-
-        if 
+        // Request 

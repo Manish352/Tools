@@ -77,11 +77,36 @@
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
-      doc.setFontSize(20);
-      doc.text("Certificate of Verification", 20, 30);
+      const today = new Date();
+      const date = today.toLocaleDateString();
+
+      // Header
+      doc.setFillColor(0, 102, 204); // blue
+      doc.rect(0, 0, 210, 30, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(18);
+      doc.text("VerifyUSDT - Certificate of Verification", 105, 20, null, null, 'center');
+
+      // Body
+      doc.setTextColor(0, 0, 0);
       doc.setFontSize(14);
-      doc.text(`This is to certify that ${name} has verified their USDT.`, 20, 50);
-      doc.text("Thank you for using VerifyUSDT.", 20, 70);
+      doc.text(`This is to certify that`, 20, 50);
+      doc.setFontSize(16);
+      doc.setTextColor(0, 102, 204);
+      doc.text(`${name}`, 20, 60);
+      doc.setFontSize(14);
+      doc.setTextColor(0, 0, 0);
+      doc.text(`has successfully verified their USDT holdings.`, 20, 70);
+      doc.text(`Date of Verification: ${date}`, 20, 85);
+      doc.setTextColor(100);
+      doc.text("Thank you for using VerifyUSDT.", 20, 105);
+
+      // Footer
+      doc.setDrawColor(0, 102, 204);
+      doc.line(20, 130, 80, 130);
+      doc.setFontSize(12);
+      doc.setTextColor(0, 0, 0);
+      doc.text("Authorized Signature", 20, 135);
 
       doc.save(`USDT_Verification_Certificate_${name}.pdf`);
     }
